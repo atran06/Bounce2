@@ -10,26 +10,23 @@ public class Ball extends GameObject{
 	
 	public Ball(int x, int y, ID id) {
 		super(x, y, id);
+		velX = (Aim.x2 - x) / 25;
+		velY = (Aim.y2 - y) / 25;
 	}
 	public void tick() {
-		velX = Aim.vX / 100;
-		velY = Aim.vY / 100;
-		//velX = (MouseInput.mx) / 100;
-		//velY = (MouseInput.my) / 100;
 
 		x += velX;
 		y += velY;
 
 		if(x < 0 || x > 1280 - 25) {
-			Aim.vX = -Aim.vX;
-			//velX = -velX;
-			//MouseInput.mx = - MouseInput.mx;
+			//Aim.vX = -Aim.vX;
+			velX = -velX;
 		}
 		if(y < 0 || y > 720 - 45) {
-			Aim.vY = -Aim.vY;
-			//velY = -velY;
-			//MouseInput.my = - MouseInput.my;
+			//Aim.vY = -Aim.vY;
+			velY = -velY;
 		}
+		System.out.println(velY);
 	}
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
