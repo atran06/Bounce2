@@ -8,11 +8,17 @@ public class Ball extends GameObject{
 
 	public Ball(int x, int y, ID id) {
 		super(x, y, id);
+		velX = 4;
+		velY = 4;
 	}
 	public void tick() {
-		velX = 5;
-		velY = 5;
-		
+		if(x < 0 || x > 1280 - 25) {
+			velX = -velX;
+		}
+		if(y < 0 || y > 720 - 45) {
+			velY = -velY;
+		}
+
 		x += velX;
 		y += velY;
 	}
