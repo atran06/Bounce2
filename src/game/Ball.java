@@ -8,11 +8,10 @@ public class Ball extends GameObject{
 	
 	public Ball(int x, int y, ID id) {
 		super(x, y, id);
-		
 	}
 	public void tick() {
-		velX = (MouseInput.mx - 25) / 100;
-		velY = (MouseInput.my - 25) / 100;
+		velX = (MouseInput.mx) / 100;
+		velY = (MouseInput.my) / 100;
 
 		x += velX;
 		y += velY;

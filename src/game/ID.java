@@ -4,5 +4,6 @@ public enum ID {
 
 	ball,
 	block,
-	door
+	door,
+	aim
 }

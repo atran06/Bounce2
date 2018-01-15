@@ -21,6 +21,7 @@ public class Game extends JPanel implements ActionListener {
 		
 		handler = new Handler();
 		handler.addObject(new Ball(0, 0, ID.ball));
+		handler.addObject(new Aim(100, 360, ID.aim));
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);
