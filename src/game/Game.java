@@ -22,7 +22,7 @@ public class Game extends JPanel implements ActionListener {
 		handler = new Handler();
 
 		handler.addObject(new Aim(0, 360, ID.aim));
-		handler.addObject(new Ball(0, 360, ID.ball));
+		handler.addObject(new Ball(10, 360, ID.ball));
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);
