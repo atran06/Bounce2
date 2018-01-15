@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 
-	protected int x, y;
-	protected int velX, velY;
+	protected double x, y;
+	protected double velX, velY;
 	protected ID id;
 	
 	public GameObject(int x, int y, ID id) {
@@ -18,25 +18,25 @@ public abstract class GameObject {
 	public abstract void paintComponent(Graphics g);
 	public abstract Rectangle getBounds();
 	
-	public int getVelX() {
+	public double getVelX() {
 		return velX;
 	}
 	public void setVelX(int velX) {
 		this.velX = velX;
 	}
-	public int getVelY() {
+	public double getVelY() {
 		return velY;
 	}
 	public void setVelY(int velY) {
 		this.velY = velY;
 	}
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	public void setX(int x) {
 		this.x = x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	public void setY(int y) {
