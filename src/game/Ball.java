@@ -26,7 +26,7 @@ public class Ball extends GameObject{
 			//Aim.vX = -Aim.vX;
 			velX = -velX;
 		}
-		if(y < 0 || y > 720 - 45) {
+		if(y < 0 || y > 720 - 60) {
 			//Aim.vY = -Aim.vY;
 			velY = -velY;
 		}

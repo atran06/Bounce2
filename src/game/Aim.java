@@ -11,7 +11,7 @@ public class Aim extends GameObject {
 
 	public static double x2, y2;
 	public static double vX, vY;
-	public static double deg = 0;
+	public static double deg = 10;
 	
 	public Aim(int x, int y, ID id) {
 		super(x, y, id);
