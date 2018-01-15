@@ -5,22 +5,26 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class Ball extends GameObject{
-
+	
 	public Ball(int x, int y, ID id) {
 		super(x, y, id);
-		velX = 4;
-		velY = 4;
+		
 	}
 	public void tick() {
-		if(x < 0 || x > 1280 - 25) {
-			velX = -velX;
-		}
-		if(y < 0 || y > 720 - 45) {
-			velY = -velY;
-		}
+		velX = (MouseInput.mx - 25) / 100;
+		velY = (MouseInput.my - 25) / 100;
 
 		x += velX;
 		y += velY;
+
+		if(x < 0 || x > 1280 - 25) {
+			//velX = -velX;
+			MouseInput.mx = - MouseInput.mx;
+		}
+		if(y < 0 || y > 720 - 45) {
+			//velY = -velY;
+			MouseInput.my = - MouseInput.my;
+		}
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);

@@ -21,5 +21,6 @@ public class Window {
 		frame.setTitle(title);
 		
 		frame.add(game);
+		frame.addMouseListener(new MouseInput());
 	}
 }
