@@ -45,5 +45,4 @@ public class Ball extends GameObject{
 	public Rectangle getBounds() {
 		return null;
 	}
-	
 }
