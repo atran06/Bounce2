@@ -14,24 +14,21 @@ public class Game extends JPanel implements ActionListener {
 
 	Timer timer = new Timer(5, this);
 
-	public static boolean restart = false;
-
 	private Handler handler;
 	public static STATE state = STATE.game;
+	public static boolean restart = false;
 
 	public Game() {
 		timer.start();
 
 		handler = new Handler();
-		
 		handler.addObject(new Aim(0, 360, ID.aim));
-		handler.addObject(new Ball(0, 360, ID.ball, handler));	
-		
+		handler.addObject(new Ball(0, 360, ID.ball, handler));
+	
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, 1280, 720);
-
 
 		handler.paintComponent(g);
 
@@ -40,14 +37,6 @@ public class Game extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		repaint();
 
-		if(restart) {
-			restart();
-		}
 		handler.tick();
-	}
-	
-	public void restart() {		
-		handler.addObject(new Aim(0, 360, ID.aim));
-		handler.addObject(new Ball(0, 360, ID.ball, handler));		
 	}
 }

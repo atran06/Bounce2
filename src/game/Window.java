@@ -20,7 +20,6 @@ public class Window {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setTitle(title);
-		
 		frame.add(game);
 		frame.addMouseListener(new MouseInput());
 		frame.addKeyListener(new KeyInput(handler));
