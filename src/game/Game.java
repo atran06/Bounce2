@@ -9,32 +9,34 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Game extends JPanel implements ActionListener {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	Timer timer = new Timer(5, this);
-	
+
 	private Handler handler;
-	
+	public static STATE state = STATE.game;
+	public static boolean restart = false;
+
 	public Game() {
 		timer.start();
-		
-		handler = new Handler();
 
+		handler = new Handler();
 		handler.addObject(new Aim(0, 360, ID.aim));
-		handler.addObject(new Ball(0, 360, ID.ball));
+		handler.addObject(new Ball(0, 360, ID.ball, handler));
+	
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, 1280, 720);
-		
+
 		handler.paintComponent(g);
-	
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
-		
+
 		handler.tick();
 	}
 }

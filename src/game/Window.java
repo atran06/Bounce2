@@ -9,6 +9,7 @@ public class Window {
 	public Window(int width, int height, String title) {
 		JFrame frame = new JFrame();
 		Game game = new Game();
+		Handler handler = new Handler();
 		
 		this.width = width;
 		this.height = height;
@@ -19,9 +20,8 @@ public class Window {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setTitle(title);
-		
 		frame.add(game);
 		frame.addMouseListener(new MouseInput());
-		frame.addKeyListener(new KeyInput());
+		frame.addKeyListener(new KeyInput(handler));
 	}
 }

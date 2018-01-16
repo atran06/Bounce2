@@ -9,26 +9,32 @@ import java.awt.geom.Ellipse2D;
 public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
+	public static boolean go = false;
+	Handler handler;
 	
-	public Ball(int x, int y, ID id) {
+	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-	
-		velX = (Aim.x2 - x) / 25;
-		velY = (Aim.y2 - y) / 25;
+		this.handler = handler;
 	}
 	public void tick() {
-
+		if(go) {
+			velX = (Aim.x2 - x) / 25;
+			velY = (Aim.y2 - y) / 25;
+			go = false;
+			System.out.println(velX);
+		}
 		if(shoot) {
 			x += velX;
 			y += velY;
 		}
 		if(x < 0 || x > 1280 - 25) {
-			//Aim.vX = -Aim.vX;
 			velX = -velX;
 		}
 		if(y < 0 || y > 720 - 60) {
-			//Aim.vY = -Aim.vY;
 			velY = -velY;
+		}
+		if(Game.restart) {
+			handler.removeObject(this);
 		}
 	}
 	public void paintComponent(Graphics g) {
@@ -39,5 +45,5 @@ public class Ball extends GameObject{
 	public Rectangle getBounds() {
 		return null;
 	}
-
+	
 }

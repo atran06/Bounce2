@@ -5,6 +5,12 @@ import java.awt.event.KeyListener;
 
 public class KeyInput implements KeyListener {
 
+	Handler handler;
+	private boolean canPress = true;
+	
+	public KeyInput(Handler handler) {
+		this.handler = handler;
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		
@@ -14,14 +20,21 @@ public class KeyInput implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 		
-		if(code == KeyEvent.VK_SPACE) {
-			Ball.shoot = true;
+		if(canPress) {
+			if(code == KeyEvent.VK_SPACE) {
+				Ball.go = true;
+				Ball.shoot = true;
+				canPress = false;
+			}
 		}
 		if(code == KeyEvent.VK_UP) {
-			Aim.deg--;
+			Aim.deg -= 5;
 		}
 		if(code == KeyEvent.VK_DOWN) {
-			Aim.deg++;
+			Aim.deg += 5;
+		}
+		if(code == KeyEvent.VK_R) {
+			Game.restart = true;
 		}
 	}
 
