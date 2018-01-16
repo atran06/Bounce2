@@ -15,6 +15,7 @@ public class KeyInput implements KeyListener {
 		int code = e.getKeyCode();
 		
 		if(code == KeyEvent.VK_SPACE) {
+			Ball.go = true;
 			Ball.shoot = true;
 		}
 		if(code == KeyEvent.VK_UP) {

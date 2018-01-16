@@ -9,15 +9,20 @@ import java.awt.geom.Ellipse2D;
 public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
-	
+	public static boolean go = false;
 	public Ball(int x, int y, ID id) {
 		super(x, y, id);
-	
-		velX = (Aim.x2 - x) / 25;
-		velY = (Aim.y2 - y) / 25;
+		
 	}
 	public void tick() {
-
+		if(go) {
+			velX = (Aim.x2 - x) / 25;
+			velY = (Aim.y2 - y) / 25;
+			go = false;
+			System.out.println(velX);
+		}
+		//System.out.println(Aim.x2 + " " + Aim.y2);
+		
 		if(shoot) {
 			x += velX;
 			y += velY;
