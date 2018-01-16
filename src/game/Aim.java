@@ -10,15 +10,17 @@ import java.awt.geom.Line2D;
 public class Aim extends GameObject {
 
 	public static double x2, y2;
-	public static double vX, vY;
-	public static double deg = 10;
-	public static boolean up = true;
+	public static double deg;
+	double angle;
+	public static boolean go = false;
 	
 	public Aim(int x, int y, ID id) {
 		super(x, y, id);
+				
+		
 	}
 	public void tick() {
-		double angle = Math.toRadians(deg);
+		angle = Math.toRadians(deg);
 		
 		x2 = (x + 100 * Math.cos(angle));
 		y2 = (y + 100 * Math.sin(angle));
@@ -33,5 +35,4 @@ public class Aim extends GameObject {
 	public Rectangle getBounds() {
 		return null;
 	}
-
 }
