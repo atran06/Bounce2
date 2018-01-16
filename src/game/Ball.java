@@ -10,9 +10,11 @@ public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
 	public static boolean go = false;
-	public Ball(int x, int y, ID id) {
+	Handler handler;
+	
+	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		
+		this.handler = handler;
 	}
 	public void tick() {
 		if(go) {
@@ -21,19 +23,18 @@ public class Ball extends GameObject{
 			go = false;
 			System.out.println(velX);
 		}
-		//System.out.println(Aim.x2 + " " + Aim.y2);
-		
 		if(shoot) {
 			x += velX;
 			y += velY;
 		}
 		if(x < 0 || x > 1280 - 25) {
-			//Aim.vX = -Aim.vX;
 			velX = -velX;
 		}
 		if(y < 0 || y > 720 - 60) {
-			//Aim.vY = -Aim.vY;
 			velY = -velY;
+		}
+		if(Game.restart) {
+			handler.removeObject(this);
 		}
 	}
 	public void paintComponent(Graphics g) {
@@ -44,5 +45,5 @@ public class Ball extends GameObject{
 	public Rectangle getBounds() {
 		return null;
 	}
-
+	
 }
