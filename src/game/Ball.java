@@ -3,8 +3,8 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 public class Ball extends GameObject{
 	
@@ -47,7 +47,7 @@ public class Ball extends GameObject{
 		g2.setColor(Color.white);
 		g2.fill(new Ellipse2D.Double(x, y, 25, 25));
 	}
-	public Rectangle getBounds() {
-		return null;
+	public Rectangle2D getBounds() {
+		return new Rectangle2D.Double(x, y, 25, 25) ;
 	}
 }

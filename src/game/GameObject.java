@@ -1,7 +1,7 @@
 package game;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 
 public abstract class GameObject {
 
@@ -16,7 +16,7 @@ public abstract class GameObject {
 	}
 	public abstract void tick();
 	public abstract void paintComponent(Graphics g);
-	public abstract Rectangle getBounds();
+	public abstract Rectangle2D getBounds();
 	
 	public double getVelX() {
 		return velX;
