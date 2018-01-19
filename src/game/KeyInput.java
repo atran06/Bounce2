@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyInput implements KeyListener {
 
 	Handler handler;
-	private boolean canPress = true;
+	public static boolean canPress = true;
 	
 	public KeyInput(Handler handler) {
 		this.handler = handler;
