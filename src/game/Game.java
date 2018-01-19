@@ -16,7 +16,6 @@ public class Game extends JPanel implements ActionListener {
 
 	private Handler handler;
 	public static STATE state = STATE.game;
-	public static boolean restart = false;
 
 	public Game() {
 		timer.start();
@@ -24,7 +23,6 @@ public class Game extends JPanel implements ActionListener {
 		handler = new Handler();
 		handler.addObject(new Aim(0, 360, ID.aim));
 		handler.addObject(new Ball(0, 360, ID.ball, handler));
-	
 	}
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);

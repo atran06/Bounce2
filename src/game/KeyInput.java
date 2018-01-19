@@ -25,6 +25,7 @@ public class KeyInput implements KeyListener {
 				Ball.go = true;
 				Ball.shoot = true;
 				canPress = false;
+				Ball.restart = false;
 			}
 		}
 		if(code == KeyEvent.VK_UP) {
@@ -34,7 +35,8 @@ public class KeyInput implements KeyListener {
 			Aim.deg += 5;
 		}
 		if(code == KeyEvent.VK_R) {
-			Game.restart = true;
+			Ball.restart = true;
+			canPress = true;
 		}
 	}
 

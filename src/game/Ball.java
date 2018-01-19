@@ -10,6 +10,7 @@ public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
 	public static boolean go = false;
+	public static boolean restart = false;
 	Handler handler;
 	
 	public Ball(int x, int y, ID id, Handler handler) {
@@ -27,14 +28,17 @@ public class Ball extends GameObject{
 			x += velX;
 			y += velY;
 		}
+		if(restart) {
+			x = 0;
+			y = 360;
+			velX = 0;
+			velY = 0;
+		}
 		if(x < 0 || x > 1280 - 25) {
 			velX = -velX;
 		}
 		if(y < 0 || y > 720 - 60) {
 			velY = -velY;
-		}
-		if(Game.restart) {
-			handler.removeObject(this);
 		}
 	}
 	public void paintComponent(Graphics g) {
