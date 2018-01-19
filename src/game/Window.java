@@ -6,9 +6,8 @@ public class Window {
 
 	public static int width, height;
 	
-	public Window(int width, int height, String title) {
+	public Window(int width, int height, String title, Game game) {
 		JFrame frame = new JFrame();
-		Game game = new Game();
 		Handler handler = new Handler();
 		
 		this.width = width;

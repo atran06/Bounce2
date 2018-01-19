@@ -19,8 +19,8 @@ public class Ball extends GameObject{
 	}
 	public void tick() {
 		if(go) {
-			velX = (Aim.x2 - x) / 25;
-			velY = (Aim.y2 - y) / 25;
+			velX = (Aim.x2 - x) / 10;
+			velY = (Aim.y2 - y) / 10;
 			go = false;
 		}
 		if(shoot) {
