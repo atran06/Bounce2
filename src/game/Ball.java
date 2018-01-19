@@ -22,7 +22,6 @@ public class Ball extends GameObject{
 			velX = (Aim.x2 - x) / 25;
 			velY = (Aim.y2 - y) / 25;
 			go = false;
-			System.out.println(velX);
 		}
 		if(shoot) {
 			x += velX;
