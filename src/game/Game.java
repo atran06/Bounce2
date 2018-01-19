@@ -13,6 +13,8 @@ public class Game extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	Timer timer = new Timer(5, this);
+	
+	public static int bounces = 5;
 
 	private Handler handler;
 	public static STATE state = STATE.game;
@@ -27,9 +29,11 @@ public class Game extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, 1280, 720);
+		
+		g.setColor(Color.WHITE);
+		g.drawString(Integer.toString(bounces), 100, 100);
 
 		handler.paintComponent(g);
-
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

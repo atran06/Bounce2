@@ -35,9 +35,11 @@ public class Ball extends GameObject{
 		}
 		if(x < 0 || x > 1280 - 25) {
 			velX = -velX;
+			Game.bounces--;
 		}
 		if(y < 0 || y > 720 - 60) {
 			velY = -velY;
+			Game.bounces--;
 		}
 	}
 	public void paintComponent(Graphics g) {

@@ -20,6 +20,9 @@ public class Aim extends GameObject {
 		
 	}
 	public void tick() {
+		if(Ball.restart) {
+			deg = 0;
+		}
 		angle = Math.toRadians(deg);
 		
 		x2 = (x + 100 * Math.cos(angle));

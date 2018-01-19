@@ -30,13 +30,16 @@ public class KeyInput implements KeyListener {
 		}
 		if(code == KeyEvent.VK_UP) {
 			Aim.deg -= 5;
+			Ball.restart = false;
 		}
 		if(code == KeyEvent.VK_DOWN) {
 			Aim.deg += 5;
+			Ball.restart = false;
 		}
 		if(code == KeyEvent.VK_R) {
 			Ball.restart = true;
 			canPress = true;
+			Game.bounces = 5;
 		}
 	}
 
