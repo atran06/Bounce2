@@ -16,7 +16,6 @@ public class Game extends JPanel implements ActionListener {
 
 	private Handler handler;
 	public static STATE state = STATE.game;
-	public static boolean restart = false;
 
 	public Game() {
 		timer.start();
