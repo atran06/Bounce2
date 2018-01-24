@@ -28,7 +28,7 @@ public class Ball extends GameObject{
 			y += velY;
 		}
 		if(restart) {
-			x = 0;
+			x = 32;
 			y = 360;
 			velX = 0;
 			velY = 0;
