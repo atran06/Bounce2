@@ -34,8 +34,8 @@ public class Game extends Canvas implements Runnable {
 		
 		loadLevel(level);
 		
-		handler.addObject(new Aim(45, 360, ID.aim));
-		handler.addObject(new Ball(32, 360, ID.ball, handler));
+		handler.addObject(new Aim(45, 355, ID.aim));
+		handler.addObject(new Ball(32, 355, ID.ball, handler));
 	}
 
 	public void run() {

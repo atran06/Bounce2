@@ -25,7 +25,7 @@ public class Block extends GameObject {
 		
 	}
 	public Rectangle2D getBounds() {
-		return new Rectangle2D.Double(x, y, 64, 64);
+		return new Rectangle2D.Double(x, y, 32, 32);
 	}
 
 }
