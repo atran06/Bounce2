@@ -74,7 +74,7 @@ public class Ball extends GameObject{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.setColor(Color.white);
+		g2.setColor(Color.cyan);
 		g2.fill(new Ellipse2D.Double(x, y, 25, 25));
 
 		g2.setStroke(new BasicStroke(1));
