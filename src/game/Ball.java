@@ -13,7 +13,7 @@ public class Ball extends GameObject{
 	public static boolean go = false;
 	public static boolean restart = false;
 	
-	private int size = 50;
+	private int size = 32;
 	Handler handler;
 	
 	public Ball(int x, int y, ID id, Handler handler) {
@@ -38,14 +38,14 @@ public class Ball extends GameObject{
 			velX = 0;
 			velY = 0;
 		}
-		if(x < 0 || x > 1280 - 25) {
-			velX = -velX;
-			Game.bounces--;
-		}
-		if(y < 0 || y > 720 - 60) {
-			velY = -velY;
-			Game.bounces--;
-		}
+//		if(x < 0 || x > 1280 - 25) {
+//			velX = -velX;
+//			Game.bounces--;
+//		}
+//		if(y < 0 || y > 720 - 60) {
+//			velY = -velY;
+//			Game.bounces--;
+//		}
 	}
 	public void collision() {
 		for(int i = 0; i < handler.list.size(); i++) {
@@ -54,29 +54,21 @@ public class Ball extends GameObject{
 			if(temp.getId() == ID.block) {
 				if(getBounds().intersects(temp.getBounds())) {
 					velY = -velY;
-//					velY = 0;
-//					velX = 0;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					velY = -velY;
-//					velY = 0;
-//					velX = 0;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsLeft().intersects(temp.getBounds())) {
 					velX = -velX;
-//					velY = 0;
-//					velX = 0;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsRight().intersects(temp.getBounds())) {
 					velX = -velX;
-//					velY = 0;
-//					velX = 0;
 				}
 			}
 		}
@@ -97,15 +89,15 @@ public class Ball extends GameObject{
 		g2.draw(getBoundsRight());
 	}
 	public Rectangle2D getBounds() {
-		return new Rectangle2D.Double((x - 9) + 20, (y - 9), size - 40, size - 42);
+		return new Rectangle2D.Double(x + 7, y, size - 14, size / 2);
 	}
 	public Rectangle2D getBoundsBottom() {
-		return new Rectangle2D.Double((x - 9) + 20, (y - 9) + 42, size - 40, size - 42);
+		return new Rectangle2D.Double(x + 7, y + size / 2, size - 14, size / 2);
 	}
 	public Rectangle2D getBoundsLeft() {
-		return new Rectangle2D.Double((x - 9), (y - 9) + 20, size - 42, size - 40);	
+		return new Rectangle2D.Double(x, y + 3, size - 26, size - 6);
 	}
 	public Rectangle2D getBoundsRight() {
-		return new Rectangle2D.Double((x - 9) + 42, (y - 9) + 20, size - 42, size - 40);
+		return new Rectangle2D.Double(x + 32 - 6, y + 3, size - 26, size - 6);
 	}
 }

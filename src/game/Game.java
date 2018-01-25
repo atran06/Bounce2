@@ -30,12 +30,12 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.imageLoader("/resources/Blok_Scene_HP.png");
+		level = loader.imageLoader("/resources/Level1.png");
 		
 		loadLevel(level);
 		
-		handler.addObject(new Aim(45, 355, ID.aim));
-		handler.addObject(new Ball(32, 320, ID.ball, handler));
+		handler.addObject(new Aim(45, 360, ID.aim));
+		handler.addObject(new Ball(32, 360, ID.ball, handler));
 	}
 
 	public void run() {
