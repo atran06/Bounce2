@@ -33,13 +33,10 @@ public class Ball extends GameObject{
 			y += velY;
 		}
 		if(restart) {
-			x = 32;
+			x = 34;
 			y = 360;
 			velX = 0;
 			velY = 0;
-		}
-		if(x > 1280 - 25) {
-			
 		}
 	}
 	public void collision() {
@@ -48,32 +45,37 @@ public class Ball extends GameObject{
 			
 			if(temp.getId() == ID.block) {
   				if(getBoundsLeft().intersects(temp.getBounds())) {
-					x = temp.getX() + 40;
+					x = temp.getX() + 32;
 					velX = -velX;
 					Game.bounces--;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsRight().intersects(temp.getBounds())) {
-					x = temp.getX() - 40;
+					x = temp.getX() - 32;
 					velX = -velX;
 					Game.bounces--;
 				}
 			}
 			if(temp.getId() == ID.block) {
 				if(getBounds().intersects(temp.getBounds())) {
-					y = temp.getY() + 40;
+					y = temp.getY() + 32;
 					velY = -velY;
 					Game.bounces--;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
-					y = temp.getY() - 35;
+					y = temp.getY() - 32;
 					velY = -velY;
 					Game.bounces--;
 				}
 			} 
+			if(temp.getId() == id.door) {
+				if(getBoundsBottom().intersects(temp.getBounds())) {
+					handler.switchLvl();
+				}
+			}
 		}
 	}
 	public void paintComponent(Graphics g) {
@@ -93,15 +95,15 @@ public class Ball extends GameObject{
 		g2.draw(getBoundsRight());
 	}
 	public Rectangle2D getBounds() {
-		return new Rectangle2D.Double(x + 12, y, size - 24, size / 2);
+		return new Rectangle2D.Double(x + 7, y, size - 14, size / 2);
 	}
 	public Rectangle2D getBoundsBottom() {
-		return new Rectangle2D.Double(x + 12, y + size / 2, size - 24, size / 2);
+		return new Rectangle2D.Double(x + 7, y + size / 2, size - 14, size / 2);
 	}
 	public Rectangle2D getBoundsLeft() {
-		return new Rectangle2D.Double(x, y + 7, size - 26, size - 14);
+		return new Rectangle2D.Double(x, y + 9, size - 26, size - 18);
 	}
 	public Rectangle2D getBoundsRight() {
-		return new Rectangle2D.Double(x + 32 - 6, y + 7, size - 26, size - 14);
+		return new Rectangle2D.Double(x + 32 - 6, y + 9, size - 26, size - 18);
 	}
 }

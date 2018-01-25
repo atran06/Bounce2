@@ -16,12 +16,13 @@ public class Game extends Canvas implements Runnable {
 	Thread thread;
 
 	public static int bounces = 5;
+	public static int llvl = 1;
 	private boolean isRunning;
 
 	private static Handler handler;
 	public static STATE state = STATE.game;
 
-	private BufferedImage level = null;
+	public static BufferedImage level = null, level2 = null;
 	private Image menu;
 
 	public Game() {
@@ -37,6 +38,7 @@ public class Game extends Canvas implements Runnable {
 
 			BufferedImageLoader loader = new BufferedImageLoader();
 			level = loader.imageLoader("/resources/Level1.png");
+			level2 = loader.imageLoader("/resources/Level2.png");
 
 			loadLevel(level);
 
@@ -134,6 +136,9 @@ public class Game extends Canvas implements Runnable {
 
 				if (red == 255) {
 					handler.addObject(new Block(xx * 32, yy * 32, ID.block));
+				}
+				if (blue == 255) {
+					handler.addObject(new Door(xx * 32, yy * 32, ID.door));
 				}
 			}
 		}

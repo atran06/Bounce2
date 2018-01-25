@@ -30,4 +30,22 @@ public class Handler {
 	public void addObject(GameObject tempObject) {
 		list.add(tempObject);
 	}
+	private void clearLvl() {
+		list.clear();
+	}
+	public void switchLvl() {
+		clearLvl();
+		Ball.restart = true;
+		KeyInput.canPress = true;
+		Game.bounces = 5;
+		
+		switch(Game.llvl) {
+		
+		case 1:
+			Game.loadLevel(Game.level2);
+			addObject(new Aim(45, 360, ID.aim));
+			addObject(new Ball(34, 360, ID.ball, this));
+			break;
+		}
+	}
 }
