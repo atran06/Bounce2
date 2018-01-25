@@ -52,31 +52,35 @@ public class Ball extends GameObject{
 			GameObject temp = handler.list.get(i);
 			
 			if(temp.getId() == ID.block) {
-				if(getBounds().intersects(temp.getBounds())) {
-					velY = -velY;
-				}
-			} 
-			if(temp.getId() == ID.block) {
-				if(getBoundsBottom().intersects(temp.getBounds())) {
-					velY = -velY;
-				}
-			} 
-			if(temp.getId() == ID.block) {
-				if(getBoundsLeft().intersects(temp.getBounds())) {
+  				if(getBoundsLeft().intersects(temp.getBounds())) {
+					x = temp.getX() + 35;
 					velX = -velX;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsRight().intersects(temp.getBounds())) {
+					x = temp.getX() - 40;
 					velX = -velX;
 				}
 			}
+			if(temp.getId() == ID.block) {
+				if(getBounds().intersects(temp.getBounds())) {
+					y = temp.getY() + 40;
+					velY = -velY;
+				}
+			} 
+			if(temp.getId() == ID.block) {
+				if(getBoundsBottom().intersects(temp.getBounds())) {
+					y = temp.getY() - 35;
+					velY = -velY;
+				}
+			} 
 		}
 	}
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.setColor(Color.cyan);
+		g2.setColor(Color.white);
 		g2.fill(new Ellipse2D.Double(x, y, 32, 32));
 
 		g2.setStroke(new BasicStroke(1));
@@ -86,6 +90,7 @@ public class Ball extends GameObject{
 		g2.draw(getBounds());
 		g2.setColor(Color.BLACK);
 		g2.draw(getBoundsLeft());
+		g2.setColor(Color.white);
 		g2.draw(getBoundsRight());
 	}
 	public Rectangle2D getBounds() {

@@ -3,5 +3,6 @@ package game;
 public enum STATE {
 
 	game,
-	two
+	two, 
+	menu
 }

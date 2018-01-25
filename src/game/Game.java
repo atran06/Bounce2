@@ -16,26 +16,30 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning;
 
 	private static Handler handler;
-	public static STATE state = STATE.game;
-	
+	public static STATE state = STATE.menu;
+
 	private BufferedImage level = null;
 
 	public Game() {
-		Window win = new Window(1280, 720, "Bounce", this);
+		Window win = new Window(1287, 720, "Bounce", this);
 
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
 
 		handler = new Handler();
-		
-		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.imageLoader("/resources/Level1.png");
-		
-		loadLevel(level);
-		
-		handler.addObject(new Aim(45, 360, ID.aim));
-		handler.addObject(new Ball(32, 360, ID.ball, handler));
+
+		if (state == STATE.game) {
+
+
+			BufferedImageLoader loader = new BufferedImageLoader();
+			level = loader.imageLoader("/resources/Level1.png");
+
+			loadLevel(level);
+
+			handler.addObject(new Aim(45, 360, ID.aim));
+			handler.addObject(new Ball(34, 360, ID.ball, handler));
+		} 
 	}
 
 	public void run() {
@@ -81,14 +85,19 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics g = strat.getDrawGraphics();
 
-		g.setColor(Color.gray);
-		g.fillRect(0, 0, 1280, 720);
+		if (state == STATE.game) {
+			g.setColor(Color.gray);
+			g.fillRect(0, 0, 1287, 720);
 
-		g.setColor(Color.WHITE);
-		g.drawString(Integer.toString(bounces), 100, 100);
+			g.setColor(Color.WHITE);
+			g.drawString(Integer.toString(bounces), 100, 100);
 
-		handler.paintComponent(g);
-
+			handler.paintComponent(g);
+		}
+		if(state == STATE.menu) {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 1287, 720);
+		}
 		g.dispose();
 		strat.show();
 	}
@@ -114,9 +123,9 @@ public class Game extends Canvas implements Runnable {
 				int red = (pixel >> 16) & 0xff;
 				int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
-				
-				if(red == 255) {
-					handler.addObject(new Block(xx*32, yy*32, ID.block));
+
+				if (red == 255) {
+					handler.addObject(new Block(xx * 32, yy * 32, ID.block));
 				}
 			}
 		}
