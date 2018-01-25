@@ -3,8 +3,11 @@ package game;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
 
 public class Game extends Canvas implements Runnable {
 
@@ -16,9 +19,10 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning;
 
 	private static Handler handler;
-	public static STATE state = STATE.menu;
+	public static STATE state = STATE.game;
 
 	private BufferedImage level = null;
+	private Image menu;
 
 	public Game() {
 		Window win = new Window(1287, 720, "Bounce", this);
@@ -31,7 +35,6 @@ public class Game extends Canvas implements Runnable {
 
 		if (state == STATE.game) {
 
-
 			BufferedImageLoader loader = new BufferedImageLoader();
 			level = loader.imageLoader("/resources/Level1.png");
 
@@ -39,7 +42,8 @@ public class Game extends Canvas implements Runnable {
 
 			handler.addObject(new Aim(45, 360, ID.aim));
 			handler.addObject(new Ball(34, 360, ID.ball, handler));
-		} 
+		}
+		loadImage();
 	}
 
 	public void run() {
@@ -76,6 +80,10 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 
+	public void loadImage() {
+		menu = new ImageIcon(getClass().getResource("/resources/Blok_Menu.png")).getImage();
+	}
+	
 	public void render() {
 		BufferStrategy strat = this.getBufferStrategy();
 		if (strat == null) {
@@ -94,10 +102,10 @@ public class Game extends Canvas implements Runnable {
 
 			handler.paintComponent(g);
 		}
-		if(state == STATE.menu) {
-			g.setColor(Color.black);
-			g.fillRect(0, 0, 1287, 720);
+		if (state == STATE.menu) {
+			g.drawImage(menu, 0, 0, null);
 		}
+
 		g.dispose();
 		strat.show();
 	}
