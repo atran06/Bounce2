@@ -43,6 +43,14 @@ public class Handler {
 		
 		case 1:
 			Game.loadLevel(Game.level2);
+			Game.llvl++;
+			addObject(new Aim(45, 360, ID.aim));
+			addObject(new Ball(34, 360, ID.ball, this));
+			break;
+		
+		case 2:
+			Game.loadLevel(Game.level3);
+			Game.llvl++;
 			addObject(new Aim(45, 360, ID.aim));
 			addObject(new Ball(34, 360, ID.ball, this));
 			break;

@@ -2,10 +2,13 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
 
@@ -22,8 +25,9 @@ public class Game extends Canvas implements Runnable {
 	private static Handler handler;
 	public static STATE state = STATE.game;
 
-	public static BufferedImage level = null, level2 = null;
-	private Image menu;
+	public static BufferedImage level = null, level2 = null, level3 = null;
+	private Image menu, hud;
+	private Image one, two, three, four, five;
 
 	public Game() {
 		Window win = new Window(1287, 720, "Bounce", this);
@@ -34,11 +38,13 @@ public class Game extends Canvas implements Runnable {
 
 		handler = new Handler();
 
+
 		if (state == STATE.game) {
 
 			BufferedImageLoader loader = new BufferedImageLoader();
 			level = loader.imageLoader("/resources/Level1.png");
 			level2 = loader.imageLoader("/resources/Level2.png");
+			level3 = loader.imageLoader("/resources/Level3.png");
 
 			loadLevel(level);
 
@@ -83,9 +89,19 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void loadImage() {
-		menu = new ImageIcon(getClass().getResource("/resources/Blok_Menu.png")).getImage();
+		if(state == STATE.menu) {
+			menu = new ImageIcon(getClass().getResource("/resources/Blok_Menu.png")).getImage();
+		}
+		if(state == STATE.game) {
+			hud = new ImageIcon(getClass().getResource("/resources/HUD.png")).getImage();
+			
+			one = new ImageIcon(getClass().getResource("/resources/1.png")).getImage();
+			two = new ImageIcon(getClass().getResource("/resources/2.png")).getImage();
+			three = new ImageIcon(getClass().getResource("/resources/3.png")).getImage();
+			four = new ImageIcon(getClass().getResource("/resources/4.png")).getImage();
+			five = new ImageIcon(getClass().getResource("/resources/5.png")).getImage();
+		}
 	}
-	
 	public void render() {
 		BufferStrategy strat = this.getBufferStrategy();
 		if (strat == null) {
@@ -99,10 +115,20 @@ public class Game extends Canvas implements Runnable {
 			g.setColor(Color.gray);
 			g.fillRect(0, 0, 1287, 720);
 
-			g.setColor(Color.WHITE);
-			g.drawString(Integer.toString(bounces), 100, 100);
-
 			handler.paintComponent(g);
+			
+			if(bounces == 1) {
+				g.drawImage(one, 210, 641, null);
+			} else if(bounces == 2) {
+				g.drawImage(two, 210, 641, null);
+			} else if(bounces == 3) {
+				g.drawImage(three, 210, 641, null);
+			} else if(bounces == 4) {
+				g.drawImage(four, 210, 641, null);
+			} else if(bounces == 5) {
+				g.drawImage(five, 210, 641, null);
+			}
+			g.drawImage(hud, 0, 0, null);
 		}
 		if (state == STATE.menu) {
 			g.drawImage(menu, 0, 0, null);
