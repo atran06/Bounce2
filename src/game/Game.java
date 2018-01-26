@@ -15,16 +15,16 @@ public class Game extends Canvas implements Runnable {
 
 	Thread thread;
 
-	public static int bounces = 5;
+	public static int bounces = 1;
 	public static int llvl = 1;
 	private boolean isRunning;
 
 	private static Handler handler;
 	public static STATE state = STATE.game;
 
-	public static BufferedImage level = null, level2 = null, level3 = null;
+	public static BufferedImage level = null, level2 = null, level3 = null, level4 = null;
 	private Image menu, hud;
-	private Image one, two, three, four, five;
+	private Image zero, one, two, three, four, five;
 
 	public Game() {
 		Window win = new Window(1287, 720, "Bounce", this);
@@ -42,11 +42,12 @@ public class Game extends Canvas implements Runnable {
 			level = loader.imageLoader("/resources/Level1.png");
 			level2 = loader.imageLoader("/resources/Level2.png");
 			level3 = loader.imageLoader("/resources/Level3.png");
+			level4 = loader.imageLoader("/resources/Level4.png");
 
 			loadLevel(level);
 
-			handler.addObject(new Aim(45, 360, ID.aim));
-			handler.addObject(new Ball(34, 360, ID.ball, handler));
+			handler.addObject(new Aim(50, 360, ID.aim));
+			handler.addObject(new Ball(34, 357, ID.ball, handler));
 		}
 		loadImage();
 	}
@@ -97,6 +98,7 @@ public class Game extends Canvas implements Runnable {
 			three = new ImageIcon(getClass().getResource("/resources/3.png")).getImage();
 			four = new ImageIcon(getClass().getResource("/resources/4.png")).getImage();
 			five = new ImageIcon(getClass().getResource("/resources/5.png")).getImage();
+			zero = new ImageIcon(getClass().getResource("/resources/0.png")).getImage();
 		}
 	}
 	public void render() {
@@ -124,6 +126,8 @@ public class Game extends Canvas implements Runnable {
 				g.drawImage(four, 210, 641, null);
 			} else if(bounces == 5) {
 				g.drawImage(five, 210, 641, null);
+			} else if(bounces == 0) {
+				g.drawImage(zero, 210, 641, null);
 			}
 			g.drawImage(hud, 0, 0, null);
 		}
@@ -138,10 +142,18 @@ public class Game extends Canvas implements Runnable {
 	private void tick() {
 		handler.tick();
 
-		if (bounces <= 0) {
+		if (bounces < 0) {
 			Ball.restart = true;
 			KeyInput.canPress = true;
-			Game.bounces = 5;
+			if(llvl == 1) {
+				bounces = 1;				
+			} else if(llvl == 2) {
+				bounces = 3;
+			} else if(llvl == 3) {
+				bounces = 3;
+			} else if(llvl == 4) {
+				bounces = 3;
+			}
 		}
 	}
 

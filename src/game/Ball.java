@@ -34,7 +34,7 @@ public class Ball extends GameObject{
 		}
 		if(restart) {
 			x = 34;
-			y = 360;
+			y = 357;
 			velX = 0;
 			velY = 0;
 		}
@@ -73,6 +73,7 @@ public class Ball extends GameObject{
 			} 
 			if(temp.getId() == id.door) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
+					Game.bounces++;
 					handler.switchLvl();
 				}
 			}
@@ -82,17 +83,18 @@ public class Ball extends GameObject{
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g2.setColor(Color.white);
-		g2.fill(new Ellipse2D.Double(x, y, 32, 32));
+		//g2.fill(new Ellipse2D.Double(x, y, 32, 32));
+		g2.draw(new Ellipse2D.Double(x, y, 32, 32));
 
-		g2.setStroke(new BasicStroke(1));
-		g2.setColor(Color.red);
-		g2.draw(getBoundsBottom());
-		g2.setColor(Color.blue);
-		g2.draw(getBounds());
-		g2.setColor(Color.BLACK);
-		g2.draw(getBoundsLeft());
-		g2.setColor(Color.white);
-		g2.draw(getBoundsRight());
+//		g2.setStroke(new BasicStroke(1));
+//		g2.setColor(Color.red);
+//		g2.draw(getBoundsBottom());
+//		g2.setColor(Color.blue);
+//		g2.draw(getBounds());
+//		g2.setColor(Color.BLACK);
+//		g2.draw(getBoundsLeft());
+//		g2.setColor(Color.white);
+//		g2.draw(getBoundsRight());
 	}
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x + 7, y, size - 14, size / 2);

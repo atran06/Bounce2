@@ -39,7 +39,15 @@ public class KeyInput implements KeyListener {
 		if(code == KeyEvent.VK_R) {
 			Ball.restart = true;
 			canPress = true;
-			Game.bounces = 5;
+			if(Game.llvl == 1) {
+				Game.bounces = 1;				
+			} else if(Game.llvl == 2) {
+				Game.bounces = 3;
+			} else if(Game.llvl == 3) {
+				Game.bounces = 3;
+			} else if(Game.llvl == 4) {
+				Game.bounces = 3;
+			}
 		}
 	}
 
