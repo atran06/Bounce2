@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,11 +7,11 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 
-public class Block extends GameObject {
+public class Block_Moss2 extends GameObject {
 
 	Image img;
 	
-	public Block(int x, int y, ID id) {
+	public Block_Moss2(int x, int y, ID id) {
 		super(x, y, id);
 		
 		loadImage();
@@ -35,6 +34,6 @@ public class Block extends GameObject {
 		return new Rectangle2D.Double(x, y, 32, 32);
 	}
 	public void loadImage() {
-		img = new ImageIcon(getClass().getResource("/resources/Block.png")).getImage();
+		img = new ImageIcon(getClass().getResource("/resources/Block_Moss2.png")).getImage();
 	}
 }
