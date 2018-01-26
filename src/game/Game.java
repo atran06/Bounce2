@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable {
 	public static STATE state = STATE.game;
 
 	public static BufferedImage level = null, level2 = null, level3 = null, level4 = null;
-	private Image menu, hud;
+	private Image menu, hud, background;
 	private Image zero, one, two, three, four, five;
 
 	public Game() {
@@ -92,6 +92,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		if(state == STATE.game) {
 			hud = new ImageIcon(getClass().getResource("/resources/HUD.png")).getImage();
+			background = new ImageIcon(getClass().getResource("/resources/Bg.png")).getImage();
 			
 			one = new ImageIcon(getClass().getResource("/resources/1.png")).getImage();
 			two = new ImageIcon(getClass().getResource("/resources/2.png")).getImage();
@@ -111,9 +112,10 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = strat.getDrawGraphics();
 
 		if (state == STATE.game) {
-			g.setColor(Color.gray);
-			g.fillRect(0, 0, 1287, 720);
-
+//			g.setColor(Color.gray);
+//			g.fillRect(0, 0, 1287, 720);
+			g.drawImage(background, 0, 0, null);
+			
 			handler.paintComponent(g);
 			
 			if(bounces == 1) {
