@@ -40,25 +40,22 @@ public class Handler {
 		
 		switch(Game.llvl) {
 		
-		case 1:
+		case 2:
 			Game.loadLevel(Game.level2);
-			Game.llvl++;
 			Game.bounces += 3;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this));
 			break;
 		
-		case 2:
+		case 3:
 			Game.loadLevel(Game.level3);
-			Game.llvl++;
 			Game.bounces += 2;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this));
 			break;
 			
-		case 3:
+		case 4:
 			Game.loadLevel(Game.level4);
-			Game.llvl++;
 			Game.bounces += 3;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this));

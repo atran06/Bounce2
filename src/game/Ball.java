@@ -1,17 +1,18 @@
 package game;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
+import java.awt.Image;
 import java.awt.geom.Rectangle2D;
+
+import javax.swing.ImageIcon;
 
 public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
 	public static boolean go = false;
 	public static boolean restart = false;
+	Image image;
 	
 	private int size = 32;
 	Handler handler;
@@ -19,6 +20,8 @@ public class Ball extends GameObject{
 	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
+		
+		loadImage();
 	}
 	public void tick() {
 		collision();
@@ -74,6 +77,7 @@ public class Ball extends GameObject{
 			if(temp.getId() == id.door) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					Game.bounces++;
+					Game.llvl++;
 					handler.switchLvl();
 				}
 			}
@@ -82,8 +86,10 @@ public class Ball extends GameObject{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.setColor(Color.white);
-		g2.fill(new Ellipse2D.Double(x, y, 32, 32));
+		g2.drawImage(image, (int) x, (int) y, null);
+		
+//		g2.setColor(Color.white);
+//		g2.fill(new Ellipse2D.Double(x, y, 32, 32));
 //		g2.draw(new Ellipse2D.Double(x, y, 32, 32));
 
 //		g2.setStroke(new BasicStroke(1));
@@ -95,6 +101,9 @@ public class Ball extends GameObject{
 //		g2.draw(getBoundsLeft());
 //		g2.setColor(Color.white);
 //		g2.draw(getBoundsRight());
+	}
+	public void loadImage() {
+		image = new ImageIcon(getClass().getResource("/resources/ball.png")).getImage();
 	}
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x + 7, y, size - 14, size / 2);

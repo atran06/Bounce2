@@ -91,7 +91,6 @@ public class Game extends Canvas implements Runnable {
 			menu = new ImageIcon(getClass().getResource("/resources/Blok_Menu.png")).getImage();
 		}
 		if(state == STATE.game) {
-			hud = new ImageIcon(getClass().getResource("/resources/HUD.png")).getImage();
 			background = new ImageIcon(getClass().getResource("/resources/Bg.png")).getImage();
 			
 			one = new ImageIcon(getClass().getResource("/resources/1.png")).getImage();
@@ -119,24 +118,35 @@ public class Game extends Canvas implements Runnable {
 			handler.paintComponent(g);
 			
 			if(bounces == 1) {
-				g.drawImage(one, 210, 641, null);
+				g.drawImage(one, 32, 639, null);
 			} else if(bounces == 2) {
-				g.drawImage(two, 210, 641, null);
+				g.drawImage(two, 32, 639, null);
 			} else if(bounces == 3) {
-				g.drawImage(three, 210, 641, null);
+				g.drawImage(three, 32, 639, null);
 			} else if(bounces == 4) {
-				g.drawImage(four, 210, 641, null);
+				g.drawImage(four, 32, 639, null);
 			} else if(bounces == 5) {
-				g.drawImage(five, 210, 641, null);
+				g.drawImage(five, 32, 639, null);
 			} else if(bounces == 0) {
-				g.drawImage(zero, 210, 641, null);
+				g.drawImage(zero, 32, 639, null);
 			}
-			g.drawImage(hud, 0, 0, null);
+			if(llvl == 1) {
+				g.drawImage(one, 1200, 639, null);
+			} else if(llvl == 2) {
+				g.drawImage(two, 1200, 639, null);
+			} else if(llvl== 3) {
+				g.drawImage(three, 1200, 639, null);
+			} else if(llvl== 4) {
+				g.drawImage(four, 1200, 639, null);
+			} else if(llvl == 5) {
+				g.drawImage(five, 1200, 639, null);
+			} else if(llvl == 0) {
+				g.drawImage(zero, 1200, 639, null);
+			}
 		}
 		if (state == STATE.menu) {
 			g.drawImage(menu, 0, 0, null);
 		}
-
 		g.dispose();
 		strat.show();
 	}
