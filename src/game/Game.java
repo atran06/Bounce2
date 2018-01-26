@@ -1,7 +1,6 @@
 package game;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
@@ -23,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 	public static STATE state = STATE.game;
 
 	public static BufferedImage level = null, level2 = null, level3 = null, level4 = null;
-	private Image menu, hud, background;
+	private Image menu, background;
 	private Image zero, one, two, three, four, five;
 
 	public Game() {
