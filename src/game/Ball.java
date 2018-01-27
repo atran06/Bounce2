@@ -84,7 +84,7 @@ public class Ball extends GameObject{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.drawImage(Game.sprite.getImg(5, 1, 32, 32), (int) x, (int) y, null);
+		g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);
 
 //		g2.setStroke(new BasicStroke(1));
 //		g2.setColor(Color.red);
