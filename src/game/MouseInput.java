@@ -12,8 +12,6 @@ public class MouseInput implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
-
-		System.out.println(mx + " " + my + " " + Game.state);
 		
 		if (mx >= 515 && mx <= 770) {
 			if (my >= 430 && my <= 700) {

@@ -16,7 +16,5 @@ public class Window {
 		frame.setTitle(title);
 		
 		frame.add(game);
-		frame.addKeyListener(new KeyInput(handler));
-		frame.addMouseListener(new MouseInput());
 	}
 }

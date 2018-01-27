@@ -20,8 +20,6 @@ public class Ball extends GameObject{
 	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
-		
-		loadImage();
 	}
 	public void tick() {
 		collision();
@@ -86,11 +84,7 @@ public class Ball extends GameObject{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.drawImage(image, (int) x, (int) y, null);
-		
-//		g2.setColor(Color.white);
-//		g2.fill(new Ellipse2D.Double(x, y, 32, 32));
-//		g2.draw(new Ellipse2D.Double(x, y, 32, 32));
+		g2.drawImage(Game.sprite.getImg(5, 1, 32, 32), (int) x, (int) y, null);
 
 //		g2.setStroke(new BasicStroke(1));
 //		g2.setColor(Color.red);
@@ -101,9 +95,6 @@ public class Ball extends GameObject{
 //		g2.draw(getBoundsLeft());
 //		g2.setColor(Color.white);
 //		g2.draw(getBoundsRight());
-	}
-	public void loadImage() {
-		image = new ImageIcon(getClass().getResource("/resources/ball.png")).getImage();
 	}
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x + 7, y, size - 14, size / 2);

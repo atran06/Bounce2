@@ -9,26 +9,16 @@ public class Door extends GameObject {
 
 	public Door(int x, int y, ID id) {
 		super(x, y, id);
-		// TODO Auto-generated constructor stub
 	}
-
-	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		g.setColor(Color.black);
-		g2.fill(new Rectangle2D.Double(x, y, 32, 32));
 		
+		g2.drawImage(Game.sprite.getImg(4, 1, 32, 32), (int) x, (int) y, null);
 	}
-
-	@Override
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x, y, 32, 32);
 	}
-
 }
