@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
+import game.Game.STATE;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,22 +21,31 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning;
 
 	private static Handler handler;
-	public static STATE state = STATE.game;
 
 	public static BufferedImage level = null, level2 = null, level3 = null, level4 = null;
 	private Image menu, background;
 	private Image zero, one, two, three, four, five;
 
+	public static enum STATE {
+		game,
+		menu,
+		setting,
+		win
+	};
+	public static STATE state;
+	
 	public Game() {
 		Window win = new Window(1287, 720, "Bounce", this);
 
+		state = STATE.menu;
+		this.addMouseListener(new MouseInput());
+		
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
 
 		handler = new Handler();
-
-
+		
 		if (state == STATE.game) {
 
 			BufferedImageLoader loader = new BufferedImageLoader();
@@ -87,7 +98,7 @@ public class Game extends Canvas implements Runnable {
 
 	public void loadImage() {
 		if(state == STATE.menu) {
-			menu = new ImageIcon(getClass().getResource("/resources/Blok_Menu.png")).getImage();
+			menu = new ImageIcon(getClass().getResource("/resources/Menu.png")).getImage();
 		}
 		if(state == STATE.game) {
 			background = new ImageIcon(getClass().getResource("/resources/Bg.png")).getImage();
@@ -109,6 +120,9 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics g = strat.getDrawGraphics();
 
+		if (state == STATE.menu) {
+			g.drawImage(menu, 0, 0, null);
+		}
 		if (state == STATE.game) {
 //			g.setColor(Color.gray);
 //			g.fillRect(0, 0, 1287, 720);
@@ -142,9 +156,6 @@ public class Game extends Canvas implements Runnable {
 			} else if(llvl == 0) {
 				g.drawImage(zero, 1200, 639, null);
 			}
-		}
-		if (state == STATE.menu) {
-			g.drawImage(menu, 0, 0, null);
 		}
 		g.dispose();
 		strat.show();

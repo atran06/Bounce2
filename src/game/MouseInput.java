@@ -4,24 +4,34 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MouseInput implements MouseListener {
-	
-	public static int mx, my;
-	
+
 	public void mouseClicked(MouseEvent e) {
-		
+
 	}
+
 	public void mousePressed(MouseEvent e) {
-		mx = (int) e.getX();
-		my = (int) e.getY();
+		int mx = e.getX();
+		int my = e.getY();
+
+		System.out.println(mx + " " + my + " " + Game.state);
+		
+		if (mx >= 515 && mx <= 770) {
+			if (my >= 430 && my <= 700) {
+				Game.state = Game.STATE.game;
+			}
+		}
 	}
+
 	public void mouseReleased(MouseEvent e) {
-		
+
 	}
+
 	public void mouseEntered(MouseEvent e) {
-		
+
 	}
+
 	public void mouseExited(MouseEvent e) {
-		
+
 	}
 
 }
