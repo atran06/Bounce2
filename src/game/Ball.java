@@ -19,6 +19,7 @@ public class Ball extends GameObject{
 	private int size = 32;
 	Handler handler;
 	private int xOrg, yOrg;
+	public static double velXOrg, velYOrg;
 	
 	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);

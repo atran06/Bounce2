@@ -15,11 +15,11 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	Thread thread;
+	public static Thread thread;
 
 	public static int bounces = 1;
 	public static int llvl = 1;
-	private boolean isRunning;
+	public static boolean isRunning;
 
 	private static Handler handler;
 	public static SpriteSheet sprite;
