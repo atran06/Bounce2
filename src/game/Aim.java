@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,8 +17,6 @@ public class Aim extends GameObject {
 	
 	public Aim(int x, int y, ID id) {
 		super(x, y, id);
-				
-		
 	}
 	public void tick() {
 		if(Ball.restart) {
@@ -31,9 +30,11 @@ public class Aim extends GameObject {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		
 		g2.setColor(Color.black);
 		g2.setStroke(new BasicStroke(5));
-		g2.draw(new Line2D.Double(x, 373, x2, y2 + 13));
+		g2.draw(new Line2D.Double(x, y + 13, x2, y2 + 13));
 	}
 	public Rectangle getBounds() {
 		return null;

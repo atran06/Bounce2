@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
@@ -14,6 +15,8 @@ public class Block extends GameObject {
 	}
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		
 		g2.drawImage(Game.sprite.getImg(1, 1, 32, 32), (int) x, (int) y, null);			
 	}	

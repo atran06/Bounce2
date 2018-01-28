@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -12,21 +13,25 @@ public class Ball extends GameObject{
 	public static boolean shoot = false;
 	public static boolean go = false;
 	public static boolean restart = false;
+	public static boolean broken = false;
 	Image image;
 	
 	private int size = 32;
 	Handler handler;
+	private int xOrg, yOrg;
 	
 	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
+		this.xOrg = x;
+		this.yOrg = y;
 	}
 	public void tick() {
 		collision();
 
 		if(go) {
-			velX = (Aim.x2 - x) / 10;
-			velY = (Aim.y2 - y) / 10;
+			velX = ((Aim.x2 - 16) - x) / 10;
+			velY = ((Aim.y2 - 3) - y) / 10;
 			go = false;
 		}
 		if(shoot) {
@@ -34,8 +39,8 @@ public class Ball extends GameObject{
 			y += velY;
 		}
 		if(restart) {
-			x = 34;
-			y = 357;
+			x = xOrg;
+			y = yOrg;
 			velX = 0;
 			velY = 0;
 		}
@@ -72,11 +77,19 @@ public class Ball extends GameObject{
 					Game.bounces--;
 				}
 			} 
-			if(temp.getId() == id.door) {
+			if(temp.getId() == ID.door) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					Game.bounces++;
 					Game.llvl++;
 					handler.switchLvl();
+				}
+			}
+			if(temp.getId() == ID.blockBreak) {
+				if(getBoundsBottom().intersects(temp.getBounds())) {
+					Game.bounces--;
+					velY = -velY;
+					broken = true;
+					handler.removeObject(temp);
 				}
 			}
 		}
@@ -84,6 +97,8 @@ public class Ball extends GameObject{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		 
 		g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);
 
 //		g2.setStroke(new BasicStroke(1));

@@ -13,10 +13,12 @@ public class MouseInput implements MouseListener {
 		int mx = e.getX();
 		int my = e.getY();
 		
-		if (mx >= 515 && mx <= 770) {
-			if (my >= 430 && my <= 700) {
-				Game.state = Game.STATE.game;
-			}
+		if(Game.state == Game.STATE.menu) {
+			if (mx >= 515 && mx <= 770) {
+				if (my >= 430 && my <= 700) {
+					Game.state = Game.STATE.game;
+				}
+			}			
 		}
 	}
 
@@ -25,7 +27,14 @@ public class MouseInput implements MouseListener {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-
+		int mx = e.getX();
+		int my = e.getY();
+		
+		if (mx >= 515 && mx <= 770) {
+			if (my >= 430 && my <= 700) {
+				System.out.println("Entered");
+			}
+		}
 	}
 
 	public void mouseExited(MouseEvent e) {

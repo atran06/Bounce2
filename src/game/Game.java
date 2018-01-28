@@ -24,7 +24,11 @@ public class Game extends Canvas implements Runnable {
 	private static Handler handler;
 	public static SpriteSheet sprite;
 
-	public static BufferedImage level = null, level2 = null, level3 = null, level4 = null;
+	public static BufferedImage level = null, 
+			level2 = null, 
+			level3 = null, 
+			level4 = null,
+			level5 =null;
 	private BufferedImage spriteSheet = null;
 	private Image menu, background;
 
@@ -51,6 +55,7 @@ public class Game extends Canvas implements Runnable {
 		level2 = loader.imageLoader("/resources/Level2.png");
 		level3 = loader.imageLoader("/resources/Level3.png");
 		level4 = loader.imageLoader("/resources/Level4.png");
+		level5 = loader.imageLoader("/resources/Level5.png");
 		spriteSheet = loader.imageLoader("/resources/SpriteSheet.png");
 		
 		sprite = new SpriteSheet(spriteSheet);
@@ -86,30 +91,30 @@ public class Game extends Canvas implements Runnable {
 			handler.paintComponent(g);
 
 			if (bounces == 1) {
-				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 648, null);
 			} else if (bounces == 2) {
-				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 648, null);
 			} else if (bounces == 3) {
-				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 648, null);
 			} else if (bounces == 4) {
-				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 648, null);
 			} else if (bounces == 5) {
-				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 648, null);
 			} else if (bounces == 0) {
-				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 648, null);
 			}
 			if (llvl == 1) {
-				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(1, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 2) {
-				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(2, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 3) {
-				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(3, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 4) {
-				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(4, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 5) {
-				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(5, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 0) {
-				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 639, null);
+				g.drawImage(sprite.getImg(6, 2, 32, 32), 1215, 648, null);
 			}
 		}
 		g.dispose();
@@ -131,6 +136,13 @@ public class Game extends Canvas implements Runnable {
 				bounces = 3;
 			} else if (llvl == 4) {
 				bounces = 3;
+			} else if (llvl == 5) {
+				if(Ball.broken = true) {
+					bounces = 0;
+					Ball.broken = false;
+				} else {
+					bounces = 2;					
+				}
 			}
 		}
 	}
@@ -158,6 +170,12 @@ public class Game extends Canvas implements Runnable {
 				}
 				if (blue == 0 && red == 255 && green == 255) {
 					handler.addObject(new Block_Moss2(xx * 32, yy * 32, ID.block));
+				}
+				if (blue == 255 && red == 0 && green == 255) {
+					handler.addObject(new Block_Break(xx * 32, yy * 32, ID.blockBreak));
+				}
+				if (blue == 255 && red == 255 && green == 0) {
+					handler.addObject(new Water(xx * 32, yy * 32, ID.water));
 				}
 			}
 		}

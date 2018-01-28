@@ -60,6 +60,14 @@ public class Handler {
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this));
 			break;
+			
+		case 5:
+			Game.loadLevel(Game.level5);
+			Game.bounces += 1;
+			addObject(new Aim(630, 550, ID.aim));
+			addObject(new Ball(614, 547, ID.ball, this));
+			break;
+			
 		}
 	}
 }
