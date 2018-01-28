@@ -8,5 +8,4 @@
 ![Level 2](https://github.com/atran06/Bounce2/blob/master/Game%20Images/Level%203.PNG)
 
 ### About
-The game is coded and designed by Arthur Tran entirely in Java using 2D Swing with photoshop for level design.
-© Arthur Tran
+The game is coded and designed by Arthur Tran entirely in Java using 2D Swing with photoshop for level design.  © Arthur Tran
