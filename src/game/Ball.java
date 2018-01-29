@@ -14,12 +14,12 @@ public class Ball extends GameObject{
 	public static boolean go = false;
 	public static boolean restart = false;
 	public static boolean broken = false;
-	Image image;
 	
-	private int size = 32;
 	Handler handler;
+
+	private int size = 32;
 	private int xOrg, yOrg;
-	public static double velXOrg, velYOrg;
+	public static int ball = 2;
 	
 	public Ball(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
@@ -100,7 +100,19 @@ public class Ball extends GameObject{
 		
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		 
-		g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);
+		if(ball == 1) {
+			g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);			
+		} else if(ball == 2) {
+			g2.drawImage(Game.sprite.getImg(2, 3, 32, 32), (int) x, (int) y, null);
+		} else if(ball == 3) {
+			g2.drawImage(Game.sprite.getImg(2, 3, 32, 32), (int) x, (int) y, null);
+		} else if(ball == 4) {
+			g2.drawImage(Game.sprite.getImg(4, 3, 32, 32), (int) x, (int) y, null);
+		} else if(ball == 5) {
+			g2.drawImage(Game.sprite.getImg(5, 3, 32, 32), (int) x, (int) y, null);
+		} else if(ball == 6) {
+			g2.drawImage(Game.sprite.getImg(6, 3, 32, 32), (int) x, (int) y, null);
+		}
 
 //		g2.setStroke(new BasicStroke(1));
 //		g2.setColor(Color.red);
