@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
+import com.sun.corba.se.spi.orbutil.fsm.State;
+
 import game.Game.STATE;
 
 public class Game extends Canvas implements Runnable {
@@ -30,10 +32,10 @@ public class Game extends Canvas implements Runnable {
 			level4 = null,
 			level5 =null;
 	private BufferedImage spriteSheet = null;
-	private Image menu, background;
+	private Image menu, background, settings, help;
 
 	public static enum STATE {
-		game, menu, setting, win
+		game, menu, setting, win, help
 	};
 
 	public static STATE state = STATE.menu;
@@ -71,6 +73,8 @@ public class Game extends Canvas implements Runnable {
 	public void loadImage() {
 		menu = new ImageIcon(getClass().getResource("/resources/Menu.png")).getImage();
 		background = new ImageIcon(getClass().getResource("/resources/Bg.png")).getImage();
+		settings = new ImageIcon(getClass().getResource("/resources/Settings.png")).getImage();
+		help = new ImageIcon(getClass().getResource("/resources/Help.png")).getImage();
 	}
 
 	public void render() {
@@ -82,7 +86,7 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = strat.getDrawGraphics();
 		if (state == STATE.menu) {
 			g.drawImage(menu, 0, 0, null);
-			if(state == STATE.game) {
+			if(state != STATE.menu) {
 				g.dispose();
 			}
 		} else if (state == STATE.game) {
@@ -115,6 +119,16 @@ public class Game extends Canvas implements Runnable {
 				g.drawImage(sprite.getImg(5, 2, 32, 32), 1215, 648, null);
 			} else if (llvl == 0) {
 				g.drawImage(sprite.getImg(6, 2, 32, 32), 1215, 648, null);
+			}
+		} else if(state == STATE.setting) {
+			g.drawImage(settings, 0, 0, null);
+			if(state != STATE.setting) {
+				g.dispose();
+			}
+		} else if(state == STATE.help) {
+			g.drawImage(help, 0, 0, null);
+			if(state != STATE.help) {
+				g.dispose();
 			}
 		}
 		g.dispose();
