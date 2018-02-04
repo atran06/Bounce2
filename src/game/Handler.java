@@ -67,7 +67,8 @@ public class Handler {
 			addObject(new Aim(630, 550, ID.aim));
 			addObject(new Ball(614, 547, ID.ball, this));
 			break;
-			
+		case 6: 
+			Game.loadLevel(Game.level);
 		}
 	}
 }
