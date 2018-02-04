@@ -17,6 +17,7 @@ public class Ball extends GameObject{
 	
 	Handler handler;
 	private Animation animation;
+	private Animation animationBack;
 
 	private int size = 32;
 	private int xOrg, yOrg;
@@ -31,6 +32,10 @@ public class Ball extends GameObject{
 				Game.sprite.getImg(ball, 4, 32, 32),
 				Game.sprite.getImg(ball, 5, 32, 32),
 				Game.sprite.getImg(ball, 6, 32, 32));
+		animationBack = new Animation(1, Game.sprite.getImg(ball, 6, 32, 32),
+				Game.sprite.getImg(ball, 5, 32, 32),
+				Game.sprite.getImg(ball, 4, 32, 32),
+				Game.sprite.getImg(ball, 3, 32, 32));
 	}
 	public void tick() {
 		collision();
@@ -51,7 +56,11 @@ public class Ball extends GameObject{
 			velY = 0;
 		}
 		
-		animation.runAnimation();
+		if(velX > 0) {
+			animation.runAnimation();			
+		} else if(velX < 0) {
+			animationBack.runAnimation();
+		}
 	}
 	public void collision() {
 		for(int i = 0; i < handler.list.size(); i++) {
@@ -107,8 +116,10 @@ public class Ball extends GameObject{
 		
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		 
-		if(velX != 0) {
+		if(velX > 0) {
 			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
+		} else if(velX < 0) {
+			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);
 		} else {
 			if(ball == 1) {
 				g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);			
