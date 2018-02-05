@@ -24,14 +24,8 @@ public class Game extends Canvas implements Runnable {
 	public static boolean isRunning;
 
 	private static Handler handler;
-	public static SpriteSheet sprite;
-
-	public static BufferedImage level = null, 
-			level2 = null, 
-			level3 = null, 
-			level4 = null,
-			level5 =null;
-	private BufferedImage spriteSheet = null;
+	private static Textures tex;
+	
 	private Image menu, background, settings, help;
 
 	public static enum STATE {
@@ -42,7 +36,7 @@ public class Game extends Canvas implements Runnable {
 
 	public Game() {
 		new Window(1287, 720, "Bounce", this);
-
+		
 		this.addMouseListener(new MouseInput());
 		this.addKeyListener(new KeyInput(handler));
 
@@ -51,18 +45,7 @@ public class Game extends Canvas implements Runnable {
 		thread.start();
 
 		handler = new Handler();
-
-		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.imageLoader("/resources/Level1.png");
-		level2 = loader.imageLoader("/resources/Level2.png");
-		level3 = loader.imageLoader("/resources/Level3.png");
-		level4 = loader.imageLoader("/resources/Level4.png");
-		level5 = loader.imageLoader("/resources/Level5.png");
-		spriteSheet = loader.imageLoader("/resources/SpriteSheet.png");
-		
-		sprite = new SpriteSheet(spriteSheet);
-
-		loadLevel(level);
+		tex = new Textures(handler);
 
 		handler.addObject(new Aim(50, 360, ID.aim));
 		handler.addObject(new Ball(34, 357, ID.ball, handler));
@@ -94,32 +77,32 @@ public class Game extends Canvas implements Runnable {
 
 			handler.paintComponent(g);
 
-			if (bounces == 1) {
-				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 648, null);
-			} else if (bounces == 2) {
-				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 648, null);
-			} else if (bounces == 3) {
-				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 648, null);
-			} else if (bounces == 4) {
-				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 648, null);
-			} else if (bounces == 5) {
-				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 648, null);
-			} else if (bounces == 0) {
-				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 648, null);
-			}
-			if (llvl == 1) {
-				g.drawImage(sprite.getImg(1, 2, 32, 32), 1215, 648, null);
-			} else if (llvl == 2) {
-				g.drawImage(sprite.getImg(2, 2, 32, 32), 1215, 648, null);
-			} else if (llvl == 3) {
-				g.drawImage(sprite.getImg(3, 2, 32, 32), 1215, 648, null);
-			} else if (llvl == 4) {
-				g.drawImage(sprite.getImg(4, 2, 32, 32), 1215, 648, null);
-			} else if (llvl == 5) {
-				g.drawImage(sprite.getImg(5, 2, 32, 32), 1215, 648, null);
-			} else if (llvl == 0) {
-				g.drawImage(sprite.getImg(6, 2, 32, 32), 1215, 648, null);
-			}
+//			if (bounces == 1) {
+//				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 648, null);
+//			} else if (bounces == 2) {
+//				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 648, null);
+//			} else if (bounces == 3) {
+//				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 648, null);
+//			} else if (bounces == 4) {
+//				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 648, null);
+//			} else if (bounces == 5) {
+//				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 648, null);
+//			} else if (bounces == 0) {
+//				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 648, null);
+//			}
+//			if (llvl == 1) {
+//				g.drawImage(sprite.getImg(1, 2, 32, 32), 1215, 648, null);
+//			} else if (llvl == 2) {
+//				g.drawImage(sprite.getImg(2, 2, 32, 32), 1215, 648, null);
+//			} else if (llvl == 3) {
+//				g.drawImage(sprite.getImg(3, 2, 32, 32), 1215, 648, null);
+//			} else if (llvl == 4) {
+//				g.drawImage(sprite.getImg(4, 2, 32, 32), 1215, 648, null);
+//			} else if (llvl == 5) {
+//				g.drawImage(sprite.getImg(5, 2, 32, 32), 1215, 648, null);
+//			} else if (llvl == 0) {
+//				g.drawImage(sprite.getImg(6, 2, 32, 32), 1215, 648, null);
+//			}
 		} else if(state == STATE.setting) {
 			g.drawImage(settings, 0, 0, null);
 			if(state != STATE.setting) {
@@ -156,40 +139,6 @@ public class Game extends Canvas implements Runnable {
 					Ball.broken = false;
 				} else {
 					bounces = 2;					
-				}
-			}
-		}
-	}
-
-	public static void loadLevel(BufferedImage image) {
-
-		int w = image.getWidth();
-		int h = image.getHeight();
-
-		for (int xx = 0; xx < w; xx++) {
-			for (int yy = 0; yy < h; yy++) {
-				int pixel = image.getRGB(xx, yy);
-				int red = (pixel >> 16) & 0xff;
-				int green = (pixel >> 8) & 0xff;
-				int blue = (pixel) & 0xff;
-
-				if (red == 255 && blue == 0 && green == 0) {
-					handler.addObject(new Block(xx * 32, yy * 32, ID.block));
-				}
-				if (blue == 255 && red == 0 && green == 0) {
-					handler.addObject(new Door(xx * 32, yy * 32, ID.door));
-				}
-				if (blue == 0 && red == 0 && green == 255) {
-					handler.addObject(new Block_Moss1(xx * 32, yy * 32, ID.block));
-				}
-				if (blue == 0 && red == 255 && green == 255) {
-					handler.addObject(new Block_Moss2(xx * 32, yy * 32, ID.block));
-				}
-				if (blue == 255 && red == 0 && green == 255) {
-					handler.addObject(new Block_Break(xx * 32, yy * 32, ID.blockBreak));
-				}
-				if (blue == 255 && red == 255 && green == 0) {
-					handler.addObject(new Water(xx * 32, yy * 32, ID.water));
 				}
 			}
 		}

@@ -28,14 +28,14 @@ public class Ball extends GameObject{
 		this.handler = handler;
 		this.xOrg = x;
 		this.yOrg = y;
-		animation = new Animation(1, Game.sprite.getImg(ball, 3, 32, 32),
-				Game.sprite.getImg(ball, 4, 32, 32),
-				Game.sprite.getImg(ball, 5, 32, 32),
-				Game.sprite.getImg(ball, 6, 32, 32));
-		animationBack = new Animation(1, Game.sprite.getImg(ball, 6, 32, 32),
-				Game.sprite.getImg(ball, 5, 32, 32),
-				Game.sprite.getImg(ball, 4, 32, 32),
-				Game.sprite.getImg(ball, 3, 32, 32));
+//		animation = new Animation(1, Game.sprite.getImg(ball, 3, 32, 32),
+//				Game.sprite.getImg(ball, 4, 32, 32),
+//				Game.sprite.getImg(ball, 5, 32, 32),
+//				Game.sprite.getImg(ball, 6, 32, 32));
+//		animationBack = new Animation(1, Game.sprite.getImg(ball, 6, 32, 32),
+//				Game.sprite.getImg(ball, 5, 32, 32),
+//				Game.sprite.getImg(ball, 4, 32, 32),
+//				Game.sprite.getImg(ball, 3, 32, 32));
 	}
 	public void tick() {
 		collision();
@@ -56,11 +56,11 @@ public class Ball extends GameObject{
 			velY = 0;
 		}
 		
-		if(velX > 0) {
-			animation.runAnimation();			
-		} else if(velX < 0) {
-			animationBack.runAnimation();
-		}
+//		if(velX > 0) {
+//			animation.runAnimation();			
+//		} else if(velX < 0) {
+//			animationBack.runAnimation();
+//		}
 	}
 	public void collision() {
 		for(int i = 0; i < handler.list.size(); i++) {
@@ -116,25 +116,26 @@ public class Ball extends GameObject{
 		
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		 
-		if(velX > 0) {
-			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
-		} else if(velX < 0) {
-			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);
-		} else {
-			if(ball == 1) {
-				g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);			
-			} else if(ball == 2) {
-				g2.drawImage(Game.sprite.getImg(2, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 3) {
-				g2.drawImage(Game.sprite.getImg(3, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 4) {
-				g2.drawImage(Game.sprite.getImg(4, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 5) {
-				g2.drawImage(Game.sprite.getImg(5, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 6) {
-				g2.drawImage(Game.sprite.getImg(6, 3, 32, 32), (int) x, (int) y, null);
-			}			
-		}
+		g2.fill(new Rectangle2D.Double(x, y, 32, 32));
+//		if(velX > 0) {
+//			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
+//		} else if(velX < 0) {
+//			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);
+//		} else {
+//			if(ball == 1) {
+//				g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);			
+//			} else if(ball == 2) {
+//				g2.drawImage(Game.sprite.getImg(2, 3, 32, 32), (int) x, (int) y, null);
+//			} else if(ball == 3) {
+//				g2.drawImage(Game.sprite.getImg(3, 3, 32, 32), (int) x, (int) y, null);
+//			} else if(ball == 4) {
+//				g2.drawImage(Game.sprite.getImg(4, 3, 32, 32), (int) x, (int) y, null);
+//			} else if(ball == 5) {
+//				g2.drawImage(Game.sprite.getImg(5, 3, 32, 32), (int) x, (int) y, null);
+//			} else if(ball == 6) {
+//				g2.drawImage(Game.sprite.getImg(6, 3, 32, 32), (int) x, (int) y, null);
+//			}			
+//		}
 
 //		g2.setStroke(new BasicStroke(1));
 //		g2.setColor(Color.red);

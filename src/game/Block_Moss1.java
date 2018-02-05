@@ -20,8 +20,8 @@ public class Block_Moss1 extends GameObject {
 		Graphics2D g2 = (Graphics2D) g;
 	
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-		
-		g2.drawImage(Game.sprite.getImg(2, 1, 32, 32), (int) x, (int) y, null);
+		g2.fill(new Rectangle2D.Double(x, y, 32, 32));
+//		g2.drawImage(Game.sprite.getImg(2, 1, 32, 32), (int) x, (int) y, null);
 	}
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x, y, 32, 32);
