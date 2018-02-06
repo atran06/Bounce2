@@ -15,6 +15,7 @@ public class Textures {
 	
 	public static BufferedImage[][] balls;
 	public static BufferedImage[][] blocks;
+	public static BufferedImage[] aim;
 	public static BufferedImage[] nums;
 	
 	static Handler handler;
@@ -40,6 +41,7 @@ public class Textures {
 		balls = new BufferedImage[5][6];
 		blocks = new BufferedImage[6][3];
 		nums = new BufferedImage[10];
+		aim = new BufferedImage[1];
 		
 		loadTextures();
 		loadLevel(level);
@@ -71,6 +73,8 @@ public class Textures {
 		nums[7] = spBlock.getImg(7, 5, 32, 32);
 		nums[8] = spBlock.getImg(8, 5, 32, 32);
 		nums[9] = spBlock.getImg(9, 5, 32, 32);
+		
+		aim[0] = spBall.getImg(10, 6, 32, 32);
 	}
 	public static void loadLevel(BufferedImage image) {
 

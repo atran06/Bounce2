@@ -7,7 +7,6 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.ImageIcon;
 
-
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
