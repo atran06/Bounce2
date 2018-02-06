@@ -3,8 +3,6 @@ package game;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import game.Game.STATE;
-
 public class MouseInput implements MouseListener {
 
 	public void mouseClicked(MouseEvent e) {

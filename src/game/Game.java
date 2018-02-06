@@ -1,17 +1,12 @@
 package game;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
-import com.sun.corba.se.spi.orbutil.fsm.State;
-
-import game.Game.STATE;
 
 public class Game extends Canvas implements Runnable {
 

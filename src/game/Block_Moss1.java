@@ -3,10 +3,7 @@ package game;
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.geom.Rectangle2D;
-
-import javax.swing.ImageIcon;
 
 public class Block_Moss1 extends GameObject {
 	
