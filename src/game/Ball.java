@@ -118,12 +118,16 @@ public class Ball extends GameObject{
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		g2.drawImage(Textures.balls[0][0], (int) x, (int) y, null);
 		
-		if(velX > 0) {
-			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
-		} else if(velX < 0) {
-			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);		
+		if(velX != 0) {
+			if(velX > 0) {
+				animation.drawAnimation(g, (int) x, (int) y, 1, 1);
+			} else if(velX < 0) {
+				animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);		
+			} else {
+				animation.drawAnimation(g, (int) x, (int) y, 1, 1);
+			}			
 		} else {
-			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
+			g.drawImage(Textures.balls[0][0], (int) x, (int) y, null);
 		}
 
 //		g2.setStroke(new BasicStroke(1));
