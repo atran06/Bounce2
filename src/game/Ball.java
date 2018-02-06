@@ -116,7 +116,7 @@ public class Ball extends GameObject{
 		
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		 
-		g2.fill(new Rectangle2D.Double(x, y, 32, 32));
+//		g2.fill(new Rectangle2D.Double(x, y, 32, 32));
 //		if(velX > 0) {
 //			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
 //		} else if(velX < 0) {
