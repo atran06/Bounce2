@@ -44,11 +44,11 @@ public class Game extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 
-		handler = new Handler();
+		handler = new Handler(tex);
 		tex = new Textures(handler);
 
 		handler.addObject(new Aim(50, 360, ID.aim));
-		handler.addObject(new Ball(34, 357, ID.ball, handler));
+		handler.addObject(new Ball(34, 357, ID.ball, handler, tex));
 		
 		loadImage();
 	}
@@ -77,32 +77,32 @@ public class Game extends Canvas implements Runnable {
 
 			handler.paintComponent(g);
 
-//			if (bounces == 1) {
-//				g.drawImage(sprite.getImg(1, 2, 32, 32), 32, 648, null);
-//			} else if (bounces == 2) {
-//				g.drawImage(sprite.getImg(2, 2, 32, 32), 32, 648, null);
-//			} else if (bounces == 3) {
-//				g.drawImage(sprite.getImg(3, 2, 32, 32), 32, 648, null);
-//			} else if (bounces == 4) {
-//				g.drawImage(sprite.getImg(4, 2, 32, 32), 32, 648, null);
-//			} else if (bounces == 5) {
-//				g.drawImage(sprite.getImg(5, 2, 32, 32), 32, 648, null);
-//			} else if (bounces == 0) {
-//				g.drawImage(sprite.getImg(6, 2, 32, 32), 32, 648, null);
-//			}
-//			if (llvl == 1) {
-//				g.drawImage(sprite.getImg(1, 2, 32, 32), 1215, 648, null);
-//			} else if (llvl == 2) {
-//				g.drawImage(sprite.getImg(2, 2, 32, 32), 1215, 648, null);
-//			} else if (llvl == 3) {
-//				g.drawImage(sprite.getImg(3, 2, 32, 32), 1215, 648, null);
-//			} else if (llvl == 4) {
-//				g.drawImage(sprite.getImg(4, 2, 32, 32), 1215, 648, null);
-//			} else if (llvl == 5) {
-//				g.drawImage(sprite.getImg(5, 2, 32, 32), 1215, 648, null);
-//			} else if (llvl == 0) {
-//				g.drawImage(sprite.getImg(6, 2, 32, 32), 1215, 648, null);
-//			}
+			if (bounces == 1) {
+				g.drawImage(Textures.nums[1], 32, 648, null);
+			} else if (bounces == 2) {
+				g.drawImage(Textures.nums[2], 32, 648, null);
+			} else if (bounces == 3) {
+				g.drawImage(Textures.nums[3], 32, 648, null);
+			} else if (bounces == 4) {
+				g.drawImage(Textures.nums[4], 32, 648, null);
+			} else if (bounces == 5) {
+				g.drawImage(Textures.nums[5], 32, 648, null);
+			} else if (bounces == 0) {
+				g.drawImage(Textures.nums[0], 32, 648, null);
+			}
+			if (llvl == 1) {
+				g.drawImage(Textures.nums[1], 1215, 648, null);
+			} else if (llvl == 2) {
+				g.drawImage(Textures.nums[2], 1215, 648, null);
+			} else if (llvl == 3) {
+				g.drawImage(Textures.nums[3], 1215, 648, null);
+			} else if (llvl == 4) {
+				g.drawImage(Textures.nums[4], 1215, 648, null);
+			} else if (llvl == 5) {
+				g.drawImage(Textures.nums[5], 1215, 648, null);
+			} else if (llvl == 0) {
+				g.drawImage(Textures.nums[0], 1215, 648, null);
+			}
 		} else if(state == STATE.setting) {
 			g.drawImage(settings, 0, 0, null);
 			if(state != STATE.setting) {

@@ -6,7 +6,6 @@ public class Window {
 	
 	public Window(int width, int height, String title, Game game) {
 		JFrame frame = new JFrame();
-		Handler handler = new Handler();
 		
 		frame.setVisible(true);
 		frame.setSize(width, height);
