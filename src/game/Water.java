@@ -7,17 +7,22 @@ import java.awt.geom.Rectangle2D;
 
 public class Water extends GameObject {
 
+	private Animation animation;
+	
 	public Water(int x, int y, ID id) {
 		super(x, y, id);
+		animation = new Animation(10, Textures.blocks[4][0],
+				Textures.blocks[4][1],
+				Textures.blocks[4][2]);
 	}
 	public void tick() {
-		
+		animation.runAnimation();
 	}
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
 		 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, .5f));
-		 g2.drawImage(Game.sprite.getImg(6, 1, 32, 32), (int) x, (int) y, null);
+		 animation.drawAnimation(g2, (int) x, (int) y, 1, 1);
 	}	
 	public Rectangle2D getBounds() {
 		return new Rectangle2D.Double(x, y, 32, 16);

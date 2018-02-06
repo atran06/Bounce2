@@ -16,6 +16,7 @@ public class Ball extends GameObject{
 	public static boolean broken = false;
 	
 	Handler handler;
+	Textures texture;
 	private Animation animation;
 	private Animation animationBack;
 
@@ -23,19 +24,22 @@ public class Ball extends GameObject{
 	private int xOrg, yOrg;
 	public static int ball = 2;
 	
-	public Ball(int x, int y, ID id, Handler handler) {
+	public Ball(int x, int y, ID id, Handler handler, Textures tex) {
 		super(x, y, id);
 		this.handler = handler;
+		this.texture = tex;
 		this.xOrg = x;
 		this.yOrg = y;
-		animation = new Animation(1, Game.sprite.getImg(ball, 3, 32, 32),
-				Game.sprite.getImg(ball, 4, 32, 32),
-				Game.sprite.getImg(ball, 5, 32, 32),
-				Game.sprite.getImg(ball, 6, 32, 32));
-		animationBack = new Animation(1, Game.sprite.getImg(ball, 6, 32, 32),
-				Game.sprite.getImg(ball, 5, 32, 32),
-				Game.sprite.getImg(ball, 4, 32, 32),
-				Game.sprite.getImg(ball, 3, 32, 32));
+		animation = new Animation(1, Textures.balls[0][1],
+				Textures.balls[0][2],
+				Textures.balls[0][3],
+				Textures.balls[0][4],
+				Textures.balls[0][5]);
+		animationBack = new Animation(1, Textures.balls[0][5],
+				Textures.balls[0][4],
+				Textures.balls[0][3],
+				Textures.balls[0][2],
+				Textures.balls[0][1]);
 	}
 	public void tick() {
 		collision();
@@ -115,25 +119,14 @@ public class Ball extends GameObject{
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-		 
+		g2.drawImage(Textures.balls[0][0], (int) x, (int) y, null);
+		
 		if(velX > 0) {
 			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
 		} else if(velX < 0) {
-			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);
+			animationBack.drawAnimation(g, (int) x, (int) y, 1, 1);		
 		} else {
-			if(ball == 1) {
-				g2.drawImage(Game.sprite.getImg(1, 3, 32, 32), (int) x, (int) y, null);			
-			} else if(ball == 2) {
-				g2.drawImage(Game.sprite.getImg(2, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 3) {
-				g2.drawImage(Game.sprite.getImg(3, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 4) {
-				g2.drawImage(Game.sprite.getImg(4, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 5) {
-				g2.drawImage(Game.sprite.getImg(5, 3, 32, 32), (int) x, (int) y, null);
-			} else if(ball == 6) {
-				g2.drawImage(Game.sprite.getImg(6, 3, 32, 32), (int) x, (int) y, null);
-			}			
+			animation.drawAnimation(g, (int) x, (int) y, 1, 1);
 		}
 
 //		g2.setStroke(new BasicStroke(1));
