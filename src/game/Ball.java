@@ -8,8 +8,10 @@ import java.awt.geom.Rectangle2D;
 public class Ball extends GameObject{
 	
 	public static boolean shoot = false;
+	public static boolean changeY = false, changeX = false;
 	public static boolean go = false;
 	public static boolean restart = false;
+	public static boolean running = false;
 	public static boolean broken = false;
 	
 	Handler handler;
@@ -47,6 +49,14 @@ public class Ball extends GameObject{
 			go = false;
 		}
 		if(shoot) {
+			if(changeY) {
+				velY = -velY;
+				changeY = false;
+			}
+			if(changeX) {
+				velX = -velX;
+				changeX = false;
+			}
 			x += velX;
 			y += velY;
 		}
@@ -55,8 +65,19 @@ public class Ball extends GameObject{
 			y = yOrg;
 			velX = 0;
 			velY = 0;
+			running = false;
+			if(Game.llvl == 1) {
+				Game.bounces = 1;
+			} else if(Game.llvl == 2) {
+				Game.bounces = 5;
+			} else if(Game.llvl == 3) {
+				Game.bounces = 2;
+			} else if(Game.llvl == 4) {
+				Game.bounces = 3;
+			} else if(Game.llvl == 5) {
+				Game.bounces = 2;
+			}
 		}
-		
 		if(velX > 0) {
 			animation.runAnimation();			
 		} else if(velX < 0) {
@@ -71,28 +92,32 @@ public class Ball extends GameObject{
   				if(getBoundsLeft().intersects(temp.getBounds())) {
 					x = temp.getX() + 32;
 					velX = -velX;
-					Game.bounces--;
+					restart = true;
+					KeyInput.canPress = true;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsRight().intersects(temp.getBounds())) {
 					x = temp.getX() - 32;
 					velX = -velX;
-					Game.bounces--;
+					restart = true;
+					KeyInput.canPress = true;
 				}
 			}
 			if(temp.getId() == ID.block) {
 				if(getBounds().intersects(temp.getBounds())) {
 					y = temp.getY() + 32;
 					velY = -velY;
-					Game.bounces--;
+					restart = true;
+					KeyInput.canPress = true;
 				}
 			} 
 			if(temp.getId() == ID.block) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					y = temp.getY() - 32;
 					velY = -velY;
-					Game.bounces--;
+					restart = true;
+					KeyInput.canPress = true;
 				}
 			} 
 			if(temp.getId() == ID.door) {

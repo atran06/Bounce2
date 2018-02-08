@@ -26,6 +26,7 @@ public class KeyInput implements KeyListener {
 				Ball.go = true;
 				Ball.shoot = true;
 				canPress = false;
+				Ball.running = true;
 				Ball.restart = false;
 			}
 		}
@@ -40,6 +41,7 @@ public class KeyInput implements KeyListener {
 		if (code == KeyEvent.VK_R) {
 			Ball.restart = true;
 			canPress = true;
+			Ball.changeY = false;
 			if (Game.llvl == 1) {
 				Game.bounces = 1;
 			} else if (Game.llvl == 2) {
@@ -50,18 +52,21 @@ public class KeyInput implements KeyListener {
 				Game.bounces = 3;
 			}
 		}
-		if (code == KeyEvent.VK_P) {
-			if(Game.isRunning) {
-				Game.isRunning = false;
-			} else if(!Game.isRunning) {
-				Game.isRunning = true;
+		if(Ball.running) {
+			if (code == KeyEvent.VK_W) {
+				Ball.changeY = true;
+				Game.bounces--;
 			}
+			if (code == KeyEvent.VK_A) {
+				Ball.changeX = true;
+				Game.bounces--;
+			}			
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
+		
 	}
 
 }

@@ -43,28 +43,24 @@ public class Handler {
 		
 		case 2:
 			Textures.loadLevel(Textures.level2);
-			Game.bounces += 3;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this, tex));
 			break;
 		
 		case 3:
 			Textures.loadLevel(Textures.level3);
-			Game.bounces += 2;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this, tex));
 			break;
 			
 		case 4:
 			Textures.loadLevel(Textures.level4);
-			Game.bounces += 3;
 			addObject(new Aim(50, 360, ID.aim));
 			addObject(new Ball(34, 357, ID.ball, this, tex));
 			break;
 			
 		case 5:
 			Textures.loadLevel(Textures.level5);
-			Game.bounces += 1;
 			addObject(new Aim(630, 550, ID.aim));
 			addObject(new Ball(614, 547, ID.ball, this, tex));
 			break;

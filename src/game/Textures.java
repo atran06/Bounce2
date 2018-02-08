@@ -47,12 +47,12 @@ public class Textures {
 		loadLevel(level);
 	}
 	public void loadTextures() {
-		balls[0][0] = spBall.getImg(1, 1, 32, 32);
-		balls[0][1] = spBall.getImg(1, 2, 32, 32);
-		balls[0][2] = spBall.getImg(1, 3, 32, 32);
-		balls[0][3] = spBall.getImg(1, 4, 32, 32);
-		balls[0][4] = spBall.getImg(1, 5, 32, 32);
-		balls[0][5] = spBall.getImg(1, 6, 32, 32);
+		balls[0][0] = spBall.getImg(Ball.ball, 1, 32, 32);
+		balls[0][1] = spBall.getImg(Ball.ball, 2, 32, 32);
+		balls[0][2] = spBall.getImg(Ball.ball, 3, 32, 32);
+		balls[0][3] = spBall.getImg(Ball.ball, 4, 32, 32);
+		balls[0][4] = spBall.getImg(Ball.ball, 5, 32, 32);
+		balls[0][5] = spBall.getImg(Ball.ball, 6, 32, 32);
 		
 		blocks[0][0] = spBlock.getImg(1, 1, 32, 32);
 		blocks[1][0] = spBlock.getImg(2, 1, 32, 32);

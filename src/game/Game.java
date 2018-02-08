@@ -120,22 +120,7 @@ public class Game extends Canvas implements Runnable {
 		if (bounces < 0) {
 			Ball.restart = true;
 			KeyInput.canPress = true;
-			if (llvl == 1) {
-				bounces = 1;
-			} else if (llvl == 2) {
-				bounces = 3;
-			} else if (llvl == 3) {
-				bounces = 3;
-			} else if (llvl == 4) {
-				bounces = 3;
-			} else if (llvl == 5) {
-				if(Ball.broken = true) {
-					bounces = 0;
-					Ball.broken = false;
-				} else {
-					bounces = 2;					
-				}
-			}
+			Ball.changeY = false;
 		}
 	}
 
