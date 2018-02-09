@@ -38,7 +38,7 @@ public class Game extends Canvas implements Runnable {
 		this.addMouseListener(new MouseInput());
 		this.addKeyListener(new KeyInput(handler));
 
-		bg = new AudioPlayer("/resources/Music and Sounds/level1-1.mp3", true);
+		bg = new AudioPlayer("/resources/Music and Sounds/orc bg.wav", true);
 		bg.play();
 
 		isRunning = true;

@@ -12,7 +12,7 @@ public class KeyInput implements KeyListener {
 	public KeyInput(Handler handler) {
 		this.handler = handler;
 		clack = new AudioPlayer("/resources/Music and Sounds/claves.wav", false);
-		clack.setVolume(.5f);
+		clack.setVolume(.1f);
 	}
 
 	@Override
