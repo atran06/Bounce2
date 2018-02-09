@@ -2,6 +2,15 @@ package game;
 
 import java.awt.image.BufferedImage;
 
+import blocks.Block;
+import blocks.Block_Break;
+import blocks.Block_Moss1;
+import blocks.Block_Moss2;
+import blocks.Door;
+import blocks.Water;
+import entities.Ball;
+import main.Handler;
+
 public class Textures {
 
 	public static SpriteSheet sprite, spBall, spBlock;
@@ -25,14 +34,14 @@ public class Textures {
 		this.handler = handler;
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.imageLoader("/resources/Level1.png");
-		level2 = loader.imageLoader("/resources/Level2.png");
-		level3 = loader.imageLoader("/resources/Level3.png");
-		level4 = loader.imageLoader("/resources/Level4.png");
-		level5 = loader.imageLoader("/resources/Level5.png");
-		spriteSheet = loader.imageLoader("/resources/SpriteSheet.png");
-		spriteBall = loader.imageLoader("/resources/Sprite_Ball.png");
-		spriteBlock = loader.imageLoader("/resources/Sprite_Block.png");
+		level = loader.imageLoader("/Levels/Level1.png");
+		level2 = loader.imageLoader("/Levels/Level2.png");
+		level3 = loader.imageLoader("/Levels/Level3.png");
+		level4 = loader.imageLoader("/Levels/Level4.png");
+		level5 = loader.imageLoader("/Levels/Level5.png");
+		spriteSheet = loader.imageLoader("/SpriteSheet.png");
+		spriteBall = loader.imageLoader("/Sprite_Ball.png");
+		spriteBlock = loader.imageLoader("/Sprite_Block.png");
 		
 		sprite = new SpriteSheet(spriteSheet);
 		spBall = new SpriteSheet(spriteBall);

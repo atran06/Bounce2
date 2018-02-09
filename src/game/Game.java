@@ -8,13 +8,20 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.ImageIcon;
 
+import entities.Aim;
+import entities.Ball;
+import main.Handler;
+import main.KeyInput;
+import main.MouseInput;
+import main.Window;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static Thread thread;
 
-	public static float volume = .1f;
+	public static float volume = .5f;
 	public static int bounces = 1;
 	public static int llvl = 1;
 	public static boolean isRunning;
@@ -22,7 +29,6 @@ public class Game extends Canvas implements Runnable {
 	private static Handler handler;
 	private static Textures tex;
 	public static AudioPlayer bg;
-	
 	
 	private Image menu, background, settings, help;
 
@@ -38,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 		this.addMouseListener(new MouseInput());
 		this.addKeyListener(new KeyInput(handler));
 
-		bg = new AudioPlayer("/resources/Music and Sounds/orc bg.wav", true);
+		bg = new AudioPlayer("/Music and Sounds/bg2.wav", true);
 		bg.play();
 
 		isRunning = true;
@@ -55,10 +61,10 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void loadImage() {
-		menu = new ImageIcon(getClass().getResource("/resources/Menu.png")).getImage();
-		background = new ImageIcon(getClass().getResource("/resources/Bg.png")).getImage();
-		settings = new ImageIcon(getClass().getResource("/resources/Settings.png")).getImage();
-		help = new ImageIcon(getClass().getResource("/resources/Help.png")).getImage();
+		menu = new ImageIcon(getClass().getResource("/Menu.png")).getImage();
+		background = new ImageIcon(getClass().getResource("/Bg.png")).getImage();
+		settings = new ImageIcon(getClass().getResource("/Settings.png")).getImage();
+		help = new ImageIcon(getClass().getResource("/Help.png")).getImage();
 	}
 
 	public void render() {
