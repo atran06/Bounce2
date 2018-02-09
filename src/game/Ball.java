@@ -39,6 +39,7 @@ public class Ball extends GameObject{
 				Textures.balls[0][3],
 				Textures.balls[0][2],
 				Textures.balls[0][1]);
+		
 	}
 	public void tick() {
 		collision();

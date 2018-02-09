@@ -14,12 +14,15 @@ public class Game extends Canvas implements Runnable {
 
 	public static Thread thread;
 
+	public static float volume = .1f;
 	public static int bounces = 1;
 	public static int llvl = 1;
 	public static boolean isRunning;
 
 	private static Handler handler;
 	private static Textures tex;
+	public static AudioPlayer bg;
+	
 	
 	private Image menu, background, settings, help;
 
@@ -35,13 +38,16 @@ public class Game extends Canvas implements Runnable {
 		this.addMouseListener(new MouseInput());
 		this.addKeyListener(new KeyInput(handler));
 
+		bg = new AudioPlayer("/resources/Music and Sounds/level1-1.mp3", true);
+		bg.play();
+
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
 
 		handler = new Handler(tex);
 		tex = new Textures(handler);
-
+		
 		handler.addObject(new Aim(50, 360, ID.aim));
 		handler.addObject(new Ball(34, 357, ID.ball, handler, tex));
 		
@@ -122,6 +128,7 @@ public class Game extends Canvas implements Runnable {
 			KeyInput.canPress = true;
 			Ball.changeY = false;
 		}
+		bg.setVolume(volume);
 	}
 
 	public void run() {

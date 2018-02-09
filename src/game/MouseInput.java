@@ -27,7 +27,7 @@ public class MouseInput implements MouseListener {
 				if (my >= 530 && my <= 690) {
 					Game.state = Game.STATE.help;
 				}
-			}					
+			} 					
 		} else if(Game.state == Game.STATE.setting) {
 			if(mx >= 40 && mx <= 90) {
 				if(my >= 645 && my <= 670) {

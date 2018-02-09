@@ -7,9 +7,12 @@ public class KeyInput implements KeyListener {
 
 	Handler handler;
 	public static boolean canPress = true;
+	private AudioPlayer clack;
 
 	public KeyInput(Handler handler) {
 		this.handler = handler;
+		clack = new AudioPlayer("/resources/Music and Sounds/clack.mp3", false);
+		clack.setVolume(.01f);
 	}
 
 	@Override
@@ -54,10 +57,12 @@ public class KeyInput implements KeyListener {
 		}
 		if(Ball.running) {
 			if (code == KeyEvent.VK_W) {
+				clack.play();
 				Ball.changeY = true;
 				Game.bounces--;
 			}
 			if (code == KeyEvent.VK_A) {
+				clack.play();
 				Ball.changeX = true;
 				Game.bounces--;
 			}			
