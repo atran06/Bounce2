@@ -1,4 +1,4 @@
-package game;
+package textures;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

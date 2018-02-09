@@ -5,10 +5,10 @@ import java.util.LinkedList;
 
 import entities.Aim;
 import entities.Ball;
+import entities.ID;
 import game.Game;
 import game.GameObject;
-import game.ID;
-import game.Textures;
+import textures.Textures;
 
 public class Handler {
 

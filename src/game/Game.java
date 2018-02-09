@@ -10,10 +10,12 @@ import javax.swing.ImageIcon;
 
 import entities.Aim;
 import entities.Ball;
+import entities.ID;
 import main.Handler;
 import main.KeyInput;
 import main.MouseInput;
 import main.Window;
+import textures.Textures;
 
 public class Game extends Canvas implements Runnable {
 
@@ -61,10 +63,10 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void loadImage() {
-		menu = new ImageIcon(getClass().getResource("/Menu.png")).getImage();
-		background = new ImageIcon(getClass().getResource("/Bg.png")).getImage();
-		settings = new ImageIcon(getClass().getResource("/Settings.png")).getImage();
-		help = new ImageIcon(getClass().getResource("/Help.png")).getImage();
+		menu = new ImageIcon(getClass().getResource("/Images/Menu.png")).getImage();
+		background = new ImageIcon(getClass().getResource("/Images/Bg.png")).getImage();
+		settings = new ImageIcon(getClass().getResource("/Images/Settings.png")).getImage();
+		help = new ImageIcon(getClass().getResource("/Images/Help.png")).getImage();
 	}
 
 	public void render() {

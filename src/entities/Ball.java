@@ -9,10 +9,9 @@ import game.Animation;
 import game.AudioPlayer;
 import game.Game;
 import game.GameObject;
-import game.ID;
-import game.Textures;
 import main.Handler;
 import main.KeyInput;
+import textures.Textures;
 
 public class Ball extends GameObject{
 	

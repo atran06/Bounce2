@@ -10,8 +10,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import game.GameObject;
-import game.ID;
-import game.Textures;
+import textures.Textures;
 
 public class Aim extends GameObject {
 

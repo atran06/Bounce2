@@ -1,4 +1,4 @@
-package game;
+package textures;
 
 import java.awt.image.BufferedImage;
 
@@ -9,6 +9,7 @@ import blocks.Block_Moss2;
 import blocks.Door;
 import blocks.Water;
 import entities.Ball;
+import entities.ID;
 import main.Handler;
 
 public class Textures {
@@ -39,9 +40,9 @@ public class Textures {
 		level3 = loader.imageLoader("/Levels/Level3.png");
 		level4 = loader.imageLoader("/Levels/Level4.png");
 		level5 = loader.imageLoader("/Levels/Level5.png");
-		spriteSheet = loader.imageLoader("/SpriteSheet.png");
-		spriteBall = loader.imageLoader("/Sprite_Ball.png");
-		spriteBlock = loader.imageLoader("/Sprite_Block.png");
+		spriteSheet = loader.imageLoader("/Sprites/SpriteSheet.png");
+		spriteBall = loader.imageLoader("/Sprites/Sprite_Ball.png");
+		spriteBlock = loader.imageLoader("/Sprites/Sprite_Block.png");
 		
 		sprite = new SpriteSheet(spriteSheet);
 		spBall = new SpriteSheet(spriteBall);

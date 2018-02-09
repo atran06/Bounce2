@@ -5,10 +5,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
+import entities.ID;
 import game.Animation;
 import game.GameObject;
-import game.ID;
-import game.Textures;
+import textures.Textures;
 
 public class Water extends GameObject {
 

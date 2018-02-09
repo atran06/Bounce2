@@ -3,6 +3,8 @@ package game;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
+import entities.ID;
+
 public abstract class GameObject {
 
 	protected double x, y;
