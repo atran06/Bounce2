@@ -11,8 +11,8 @@ public class KeyInput implements KeyListener {
 
 	public KeyInput(Handler handler) {
 		this.handler = handler;
-		clack = new AudioPlayer("/resources/Music and Sounds/clack.mp3", false);
-		clack.setVolume(.01f);
+		clack = new AudioPlayer("/resources/Music and Sounds/claves.wav", false);
+		clack.setVolume(.5f);
 	}
 
 	@Override
