@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 
@@ -27,18 +29,19 @@ public class Game extends Canvas implements Runnable {
 	public static int bounces = 1;
 	public static int llvl = 1;
 	public static boolean isRunning;
+	private int seconds = 0;
 
 	private static Handler handler;
 	private static Textures tex;
 	public static AudioPlayer bg;
 	
-	private Image menu, background, settings, help;
+	private Image menu, background, settings, help, load;
 
 	public static enum STATE {
-		game, menu, setting, win, help
+		game, menu, setting, win, help, load
 	};
 
-	public static STATE state = STATE.menu;
+	public static STATE state = STATE.load;
 
 	public Game() {
 		new Window(1287, 720, "Bounce", this);
@@ -63,6 +66,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void loadImage() {
+		load = new ImageIcon(getClass().getResource("/Images/Load.gif")).getImage();
 		menu = new ImageIcon(getClass().getResource("/Images/Menu.png")).getImage();
 		background = new ImageIcon(getClass().getResource("/Images/Bg.png")).getImage();
 		settings = new ImageIcon(getClass().getResource("/Images/Settings.png")).getImage();
@@ -122,11 +126,15 @@ public class Game extends Canvas implements Runnable {
 			if(state != STATE.help) {
 				g.dispose();
 			}
+		} else if(state == STATE.load) {
+			g.setColor(new Color(24, 19, 16));
+			g.fillRect(0, 0, 1282, 720);
+			g.drawImage(load, 380, 100, null);
 		}
 		g.dispose();
 		strat.show();
 	}
-
+	
 	private void tick() {
 		if (state == STATE.game) {
 			handler.tick();
@@ -135,6 +143,11 @@ public class Game extends Canvas implements Runnable {
 			Ball.restart = true;
 			KeyInput.canPress = true;
 			Ball.changeY = false;
+		}
+		if(state == STATE.load) {
+			if(seconds == 5) {
+				state = STATE.menu;
+			}
 		}
 		bg.setVolume(volume);
 	}
@@ -164,6 +177,10 @@ public class Game extends Canvas implements Runnable {
 
 			///// Updates the FPS/////
 			if (lastFPSTime >= 1000000000) {
+				if(seconds < 5) {
+					seconds++;
+					System.out.println(seconds);					
+				}
 				System.out.println("FPS: " + fps);
 				fps = 0;
 				lastFPSTime = 0;
