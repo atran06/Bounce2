@@ -5,9 +5,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javax.swing.ImageIcon;
 
 import entities.Aim;
@@ -80,7 +77,13 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = strat.getDrawGraphics();
-		if (state == STATE.menu) {
+		
+		if(state == STATE.load) {
+			g.setColor(new Color(24, 19, 16));
+			g.fillRect(0, 0, 1282, 720);
+			g.drawImage(load, 380, 100, null);
+			
+		} else if (state == STATE.menu) {
 			g.drawImage(menu, 0, 0, null);
 			if(state != STATE.menu) {
 				g.dispose();
@@ -126,16 +129,17 @@ public class Game extends Canvas implements Runnable {
 			if(state != STATE.help) {
 				g.dispose();
 			}
-		} else if(state == STATE.load) {
-			g.setColor(new Color(24, 19, 16));
-			g.fillRect(0, 0, 1282, 720);
-			g.drawImage(load, 380, 100, null);
-		}
+		} 
 		g.dispose();
 		strat.show();
 	}
 	
 	private void tick() {
+		if(state == STATE.load) {
+			if(seconds == 5) {
+				state = STATE.menu;
+			}
+		}
 		if (state == STATE.game) {
 			handler.tick();
 		}
@@ -143,11 +147,6 @@ public class Game extends Canvas implements Runnable {
 			Ball.restart = true;
 			KeyInput.canPress = true;
 			Ball.changeY = false;
-		}
-		if(state == STATE.load) {
-			if(seconds == 5) {
-				state = STATE.menu;
-			}
 		}
 		bg.setVolume(volume);
 	}
