@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
@@ -35,13 +36,14 @@ public class Game extends Canvas implements Runnable {
 	private Image menu, background, settings, help, load;
 
 	public static enum STATE {
-		game, menu, setting, win, help, load
+		game, menu, setting, win, help, load, end
 	};
 
 	public static STATE state = STATE.load;
 
 	public Game() {
 		new Window(1287, 720, "Bounce", this);
+		
 		
 		this.addMouseListener(new MouseInput());
 		this.addKeyListener(new KeyInput(handler));
@@ -69,7 +71,7 @@ public class Game extends Canvas implements Runnable {
 		settings = new ImageIcon(getClass().getResource("/Images/Settings.png")).getImage();
 		help = new ImageIcon(getClass().getResource("/Images/Help.png")).getImage();
 	}
-
+	
 	public void render() {
 		BufferStrategy strat = this.getBufferStrategy();
 		if (strat == null) {
@@ -129,7 +131,13 @@ public class Game extends Canvas implements Runnable {
 			if(state != STATE.help) {
 				g.dispose();
 			}
-		} 
+		} else if(state == STATE.end) {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 1287, 720);
+			g.setColor(Color.white);
+			g.setFont(new Font("Arial", Font.BOLD, 100));
+			g.drawString("You Win!", 500, 300);
+		}
 		g.dispose();
 		strat.show();
 	}

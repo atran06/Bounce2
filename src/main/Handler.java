@@ -72,7 +72,7 @@ public class Handler {
 			addObject(new Ball(614, 547, ID.ball, this, tex));
 			break;
 		case 6: 
-			Textures.loadLevel(Textures.level);
+			Game.state = Game.STATE.end;
 		}
 	}
 }

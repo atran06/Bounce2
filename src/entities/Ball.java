@@ -27,7 +27,7 @@ public class Ball extends GameObject{
 	private Animation animation;
 	private Animation animationBack;
 	private AudioPlayer collide;
-	private AudioPlayer door;
+	private AudioPlayer water;
 
 	private int size = 32;
 	private int xOrg, yOrg;
@@ -51,8 +51,8 @@ public class Ball extends GameObject{
 				Textures.balls[0][1]);
 		
 		collide = new AudioPlayer("/Music and Sounds/thud.wav", false);
-		door = new AudioPlayer("/Music and Sounds/nextlevel.wav", false);
-		door.setVolume(.1f);
+		water = new AudioPlayer("/Music and Sounds/nextlevel.wav", false);
+		water.setVolume(.1f);
 	}
 	public void tick() {
 		collision();
@@ -104,7 +104,6 @@ public class Ball extends GameObject{
 			
 			if(temp.getId() == ID.door) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
-					door.play();
 					Game.bounces++;
 					Game.llvl++;
 					handler.switchLvl();
@@ -113,8 +112,6 @@ public class Ball extends GameObject{
 			else if(temp.getId() == ID.block) {
   				if(getBoundsLeft().intersects(temp.getBounds())) {
   					collide.play();
-					x = temp.getX() + 32;
-					velX = -velX;
 					restart = true;
 					KeyInput.canPress = true;
 				}
@@ -122,8 +119,6 @@ public class Ball extends GameObject{
 			else if(temp.getId() == ID.block) {
 				if(getBoundsRight().intersects(temp.getBounds())) {
 					collide.play();
-					x = temp.getX() - 32;
-					velX = -velX;
 					restart = true;
 					KeyInput.canPress = true;
 				}
@@ -131,17 +126,13 @@ public class Ball extends GameObject{
 			else if(temp.getId() == ID.block) {
 				if(getBounds().intersects(temp.getBounds())) {
 					collide.play();
-					y = temp.getY() + 32;
-					velY = -velY;
 					restart = true;
 					KeyInput.canPress = true;
 				}
 			} 
-			if(temp.getId() == ID.block) {
+			else if(temp.getId() == ID.block) {
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					collide.play();
-					y = temp.getY() - 32;
-					velY = -velY;
 					restart = true;
 					KeyInput.canPress = true;
 				}
@@ -154,6 +145,34 @@ public class Ball extends GameObject{
 					handler.removeObject(temp);
 				}
 			}
+			else if(temp.getId() == ID.water) {
+  				if(getBoundsLeft().intersects(temp.getBounds())) {
+  					water.play();
+					restart = true;
+					KeyInput.canPress = true;
+				}
+			} 
+			else if(temp.getId() == ID.water) {
+				if(getBoundsRight().intersects(temp.getBounds())) {
+					water.play();
+					restart = true;
+					KeyInput.canPress = true;
+				}
+			}
+			else if(temp.getId() == ID.water) {
+				if(getBounds().intersects(temp.getBounds())) {
+					water.play();
+					restart = true;
+					KeyInput.canPress = true;
+				}
+			} 
+			else if(temp.getId() == ID.water) {
+				if(getBoundsBottom().intersects(temp.getBounds())) {
+					water.play();
+					restart = true;
+					KeyInput.canPress = true;
+				}
+			} 
 		}
 	}
 	public void paintComponent(Graphics g) {
