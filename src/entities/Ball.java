@@ -21,9 +21,12 @@ public class Ball extends GameObject{
 	public static boolean restart = false;
 	public static boolean running = false;
 	public static boolean broken = false;
+	public static boolean hit = false;
+	public static int hitX, hitY;
 	
 	Handler handler;
 	Textures texture;
+	
 	private Animation animation;
 	private Animation animationBack;
 	private AudioPlayer collide;
@@ -113,6 +116,9 @@ public class Ball extends GameObject{
   				if(getBoundsLeft().intersects(temp.getBounds())) {
   					collide.play();
 					restart = true;
+					hit = true;
+					hitX = (int) x;
+					hitY = (int) y;
 					KeyInput.canPress = true;
 				}
 			} 
@@ -120,6 +126,9 @@ public class Ball extends GameObject{
 				if(getBoundsRight().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					hit = true;
+					hitX = (int) x;
+					hitY = (int) y;
 					KeyInput.canPress = true;
 				}
 			}
@@ -127,6 +136,9 @@ public class Ball extends GameObject{
 				if(getBounds().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					hit = true;
+					hitX = (int) x;
+					hitY = (int) y;
 					KeyInput.canPress = true;
 				}
 			} 
@@ -134,6 +146,9 @@ public class Ball extends GameObject{
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					hit = true;
+					hitX = (int) x;
+					hitY = (int) y;
 					KeyInput.canPress = true;
 				}
 			} 
@@ -142,6 +157,9 @@ public class Ball extends GameObject{
 					Game.bounces--;
 					velY = -velY;
 					broken = true;
+					hit = true;
+					hitX = (int) x;
+					hitY = (int) y;
 					handler.removeObject(temp);
 				}
 			}
@@ -192,7 +210,6 @@ public class Ball extends GameObject{
 		} else {
 			g.drawImage(Textures.balls[0][0], (int) x, (int) y, null);
 		}
-
 //		g2.setStroke(new BasicStroke(1));
 //		g2.setColor(Color.red);
 //		g2.draw(getBoundsBottom());

@@ -72,6 +72,9 @@ public class KeyInput implements KeyListener {
 				Game.bounces--;
 			}			
 		}
+		if(code == KeyEvent.VK_0) {
+			Ball.hit = false;
+		}
 	}
 
 	@Override

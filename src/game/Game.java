@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable {
 		game, menu, setting, win, help, load, end
 	};
 
-	public static STATE state = STATE.load;
+	public static STATE state = STATE.menu;
 
 	public Game() {
 		new Window(1287, 720, "Bounce", this);
