@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
+import blocks.Block;
 import game.Animation;
 import game.AudioPlayer;
 import game.Game;
@@ -116,6 +117,7 @@ public class Ball extends GameObject{
   				if(getBoundsLeft().intersects(temp.getBounds())) {
   					collide.play();
 					restart = true;
+					Block.timeGo = true;
 					hit = true;
 					hitX = (int) x;
 					hitY = (int) y;
@@ -126,6 +128,7 @@ public class Ball extends GameObject{
 				if(getBoundsRight().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					Block.timeGo = true;
 					hit = true;
 					hitX = (int) x;
 					hitY = (int) y;
@@ -136,6 +139,7 @@ public class Ball extends GameObject{
 				if(getBounds().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					Block.timeGo = true;
 					hit = true;
 					hitX = (int) x;
 					hitY = (int) y;
@@ -146,6 +150,7 @@ public class Ball extends GameObject{
 				if(getBoundsBottom().intersects(temp.getBounds())) {
 					collide.play();
 					restart = true;
+					Block.timeGo = true;
 					hit = true;
 					hitX = (int) x;
 					hitY = (int) y;

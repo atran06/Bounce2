@@ -4,8 +4,6 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import entities.Ball;
 import entities.ID;
@@ -14,10 +12,10 @@ import game.GameObject;
 import textures.Textures;
 
 public class Block extends GameObject {
-	
+	//TODO try to use currentTime mills to do the timer
 	private Animation animationHit;
-	private Timer timer;
-	private int seconds = 0;
+	public static boolean timeGo = false;
+	public static long startTime;
 	
 	public Block(int x, int y, ID id) {
 		super(x, y, id);
@@ -27,30 +25,22 @@ public class Block extends GameObject {
 				Textures.balls[0][3],
 				Textures.balls[0][2],
 				Textures.balls[0][1]);
-		
-		timer = new Timer();
-		count();
 	}
 	public void tick() {
 		
-		if(!Ball.hit) {
-			seconds = 0;
-			System.out.println(seconds);
-		} else if(Ball.hit) {
+		if(Ball.hit) {
 			animationHit.runAnimation();
-		} 
-	}
-	public void count() {
-		timer.schedule(new TimerTask() {
-			public void run(){
-				seconds++;
-				
-				if(seconds > 0) {
-					seconds = 0;
-					Ball.hit = false;
-				}
+			if(timeGo) {
+				startTime = System.currentTimeMillis();
+				timeGo = false;
 			}
-		}, 1000, 1000);
+		} 
+		if(getTime() > 100) {
+			Ball.hit = false;
+		}
+	}
+	public long getTime() {
+		return System.currentTimeMillis() - startTime;
 	}
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;

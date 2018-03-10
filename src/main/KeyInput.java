@@ -3,6 +3,7 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import blocks.Block;
 import entities.Aim;
 import entities.Ball;
 import game.AudioPlayer;
@@ -71,9 +72,6 @@ public class KeyInput implements KeyListener {
 				Ball.changeX = true;
 				Game.bounces--;
 			}			
-		}
-		if(code == KeyEvent.VK_0) {
-			Ball.hit = false;
 		}
 	}
 

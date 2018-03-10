@@ -28,7 +28,7 @@ public class Game extends Canvas implements Runnable {
 	public static int llvl = 1;
 	public static boolean isRunning;
 	private int seconds = 0;
-
+	
 	private static Handler handler;
 	private static Textures tex;
 	public static AudioPlayer bg;
@@ -54,7 +54,7 @@ public class Game extends Canvas implements Runnable {
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
-
+		
 		handler = new Handler(tex);
 		tex = new Textures(handler);
 		
