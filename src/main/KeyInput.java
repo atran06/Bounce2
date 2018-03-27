@@ -73,6 +73,12 @@ public class KeyInput implements KeyListener {
 				Game.bounces--;
 			}			
 		}
+		if(code == KeyEvent.VK_0) {
+			Game.bg.play();
+		}
+		if(code == KeyEvent.VK_9) {
+			Game.bg.stop();
+		}
 	}
 
 	@Override
