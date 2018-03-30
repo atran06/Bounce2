@@ -42,8 +42,6 @@ public class KeyInput implements KeyListener {
 				window.getFrame().dispose();
 				
 				window.getFrame().getContentPane().setPreferredSize(new Dimension((int) window.getWidth(), (int) window.getHeight()));
-				window.getFrame().setMinimumSize(new Dimension((int) window.getWidth(), (int) window.getHeight()));
-				window.getFrame().setMaximumSize(new Dimension((int) window.getWidth(), (int) window.getHeight()));
 				
 				window.getFrame().setLocation((int) ((window.getScreenWidth() / 2) - (window.getWidth() / 2)),
 						(int) ((window.getScreenHeight() / 2) - window.getHeight() / 2));

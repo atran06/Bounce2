@@ -43,10 +43,10 @@ public class Game extends Canvas implements Runnable {
 		game, menu, setting, win, help, load, end
 	};
 
-	public static STATE state = STATE.load;
+	public static STATE state = STATE.menu;
 
 	public Game() {
-		window = new Window(1287, 720, "Bounce", this);
+		window = new Window(1280, 720, "Bounce", this);
 		
 		this.addMouseListener(new MouseInput(this));
 		this.addKeyListener(new KeyInput(handler, window, this));
@@ -149,7 +149,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
-		scaleWidth = window.getFrameWidth() / 1287;
+		scaleWidth = window.getFrameWidth() / 1280;
 		scaleHeight = window.getFrameHeight() / 720;
 		
 		if(state == STATE.load) {
