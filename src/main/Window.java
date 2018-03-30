@@ -22,21 +22,31 @@ public class Window {
 		
 		frame = new JFrame();
 		
-		frame.getContentPane().setPreferredSize(new Dimension((int) width, (int) height));
-		frame.setMinimumSize(new Dimension((int) width, (int) height));
-		frame.setMaximumSize(new Dimension((int) width, (int) height));
-		
-//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//		frame.setUndecorated(true);
+//		frame.getContentPane().setPreferredSize(new Dimension((int) width, (int) height));
+//		frame.setMinimumSize(new Dimension((int) width, (int) height));
+//		frame.setMaximumSize(new Dimension((int) width, (int) height));
+
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
 		frame.setVisible(true);
-//		frame.setSize((int) getScreenWidth(), (int) getScreenHeight());
+		frame.setSize((int) getScreenWidth(), (int) getScreenHeight());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setLocation((int) ((screenSize.getWidth() / 2) - (width / 2)), 
+//				(int) ((screenSize.getHeight() / 2) - (height / 2)));
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setTitle(title);
 		
 		frame.add(game);
-		frame.pack();
+//		frame.pack();
+	}
+	
+	public double getWidth() {
+		return this.width;
+	}
+	
+	public double getHeight() {
+		return this.height;
 	}
 	
 	public double getFrameWidth() {

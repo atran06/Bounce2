@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
 		window = new Window(1287, 720, "Bounce", this);
 		
 		this.addMouseListener(new MouseInput(this));
-		this.addKeyListener(new KeyInput(handler));
+		this.addKeyListener(new KeyInput(handler, window, this));
 
 		bg = new AudioPlayer("/Music and Sounds/bg2.wav", true);
 		bg.play();
