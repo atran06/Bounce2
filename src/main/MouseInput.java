@@ -8,6 +8,12 @@ import game.Game.STATE;
 
 public class MouseInput implements MouseListener {
 
+	Game game;
+	
+	public MouseInput(Game game) {
+		this.game = game;
+	}
+	
 	public void mouseClicked(MouseEvent e) {
 
 	}
@@ -18,8 +24,8 @@ public class MouseInput implements MouseListener {
 		
 		System.out.println(mx + " " + my);
 		if(Game.state == Game.STATE.menu) {
-			if (mx >= 515 && mx <= 770) {
-				if (my >= 430 && my <= 700) {
+			if (mx >= 515 * game.getScaleWidth() && mx <= 770 * game.getScaleWidth()) {
+				if (my >= 430 * game.getScaleHeight() && my <= 700 * game.getScaleHeight()) {
 					Game.state = Game.STATE.game;
 				}
 			} else if (mx >= 32 && mx <= 220) {

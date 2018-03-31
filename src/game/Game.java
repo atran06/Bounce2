@@ -4,8 +4,10 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
+
 import javax.swing.ImageIcon;
 
 import entities.Aim;
@@ -28,7 +30,9 @@ public class Game extends Canvas implements Runnable {
 	public static int llvl = 1;
 	public static boolean isRunning;
 	private int seconds = 0;
+	private double scaleWidth, scaleHeight;
 	
+	private Window window;
 	private static Handler handler;
 	private static Textures tex;
 	public static AudioPlayer bg;
@@ -42,11 +46,10 @@ public class Game extends Canvas implements Runnable {
 	public static STATE state = STATE.menu;
 
 	public Game() {
-		new Window(1287, 720, "Bounce", this);
+		window = new Window(1280, 720, "Bounce", this);
 		
-		
-		this.addMouseListener(new MouseInput());
-		this.addKeyListener(new KeyInput(handler));
+		this.addMouseListener(new MouseInput(this));
+		this.addKeyListener(new KeyInput(handler, window, this));
 
 		bg = new AudioPlayer("/Music and Sounds/bg2.wav", true);
 		bg.play();
@@ -79,10 +82,13 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = strat.getDrawGraphics();
+		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.scale(scaleWidth, scaleHeight);
 		
 		if(state == STATE.load) {
 			g.setColor(new Color(24, 19, 16));
-			g.fillRect(0, 0, 1282, 720);
+			g.fillRect(0, 0, 1287, 720);
 			g.drawImage(load, 380, 100, null);
 			
 		} else if (state == STATE.menu) {
@@ -143,6 +149,9 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
+		scaleWidth = window.getFrameWidth() / 1280;
+		scaleHeight = window.getFrameHeight() / 720;
+		
 		if(state == STATE.load) {
 			if(seconds == 5) {
 				state = STATE.menu;
@@ -195,5 +204,21 @@ public class Game extends Canvas implements Runnable {
 
 			render();
 		}
+	}
+
+	public double getScaleWidth() {
+		return scaleWidth;
+	}
+	
+	public void setScaleWidth(double scaleWidth) {
+		this.scaleWidth = scaleWidth;
+	}
+	
+	public double getScaleHeight() {
+		return scaleHeight;
+	}
+	
+	public void setScaleHeight(double scaleHeight) {
+		this.scaleHeight = scaleHeight;
 	}
 }
