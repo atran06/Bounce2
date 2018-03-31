@@ -36,6 +36,7 @@ public class Game extends Canvas implements Runnable {
 	private static Handler handler;
 	private static Textures tex;
 	public static AudioPlayer bg;
+	private boolean loaded;
 	
 	private Image menu, background, settings, help, load;
 
@@ -43,10 +44,12 @@ public class Game extends Canvas implements Runnable {
 		game, menu, setting, win, help, load, end
 	};
 
-	public static STATE state = STATE.menu;
+	public static STATE state = STATE.load;
 
 	public Game() {
 		window = new Window(1280, 720, "Bounce", this);
+		
+		loaded = false;
 		
 		this.addMouseListener(new MouseInput(this));
 		this.addKeyListener(new KeyInput(handler, window, this));
@@ -65,6 +68,8 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new Ball(34, 357, ID.ball, handler, tex));
 		
 		loadImage();
+		
+		loaded = true;
 	}
 
 	public void loadImage() {
@@ -152,11 +157,14 @@ public class Game extends Canvas implements Runnable {
 		scaleWidth = window.getFrameWidth() / 1280;
 		scaleHeight = window.getFrameHeight() / 720;
 		
-		if(state == STATE.load) {
-			if(seconds == 5) {
-				state = STATE.menu;
-			}
+		if(loaded) {
+			state = STATE.menu;
 		}
+//		if(state == STATE.load) {
+//			if(seconds == 5) {
+//				state = STATE.menu;
+//			}
+//		}
 		if (state == STATE.game) {
 			handler.tick();
 		}
