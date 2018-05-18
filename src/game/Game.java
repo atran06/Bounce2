@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 		game, menu, setting, win, help, load, end
 	};
 
-	public static STATE state = STATE.load;
+	public static STATE state = STATE.game;
 
 	public Game() {
 		window = new Window(1280, 720, "Bounce", this);
@@ -83,7 +83,7 @@ public class Game extends Canvas implements Runnable {
 	public void render() {
 		BufferStrategy strat = this.getBufferStrategy();
 		if (strat == null) {
-			this.createBufferStrategy(4);
+			this.createBufferStrategy(3);
 			return;
 		}
 		Graphics g = strat.getDrawGraphics();
@@ -149,8 +149,8 @@ public class Game extends Canvas implements Runnable {
 			g.setFont(new Font("Arial", Font.BOLD, 100));
 			g.drawString("You Win!", 500, 300);
 		}
-		g.dispose();
 		strat.show();
+		g.dispose();
 	}
 	
 	private void tick() {
